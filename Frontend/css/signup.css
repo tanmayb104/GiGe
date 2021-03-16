@@ -1,0 +1,78 @@
+html, body{
+	height:100%;
+	margin:0;
+}
+.whole{
+	height:100%;
+	background-color: #FFDF00;
+	background-image: url("../images/Group 5.png");
+	background-size: cover;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+.container{
+	background-color: black;
+    color: white;
+	width:80%;
+	height:80%;
+	margin: auto;
+	font-family: 'Poppins',sans-serif;
+    display:flex;
+    border-radius: 5%;
+}
+.child1{
+    flex: 1;
+    margin-top: 5%;
+    border-radius: 5%;
+    margin-bottom: auto;
+}
+.child1 > h1{
+    margin-left: 30px;
+    font-size: 100px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+p{
+    margin-left: 30px;
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 60px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.child{
+    background-color: white;
+    flex: 1;
+    border-radius: 5%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.aligner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+input{
+    border:0 solid;
+    border-bottom: 2px solid #FFDF00;
+    width:400px;
+    margin: 10px;
+    height:30px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 20px;
+}
+input:focus{
+    outline: none;
+    border:0 solid;
+    border-bottom: 2px solid #FFDF00;
+}
+input[type=submit]{
+    width:100px;
+    border:0 solid;
+}
+
+
+

@@ -28,16 +28,23 @@ html,body{
 	height:100%;
 }
 .second{
-	height:100%;
 	background-color: #FFDF00;
 	font-weight: 500;
 	font-family: 'Poppins', sans-serif;
 	font-size: 100px;
+	display:flex;
 }
 .second > p{
 	margin:20px;
 	padding:10px;
 
+}
+.childs{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 #line{
 	font-size: 150px;
