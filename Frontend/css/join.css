@@ -37,4 +37,10 @@ button{
 	font-family: 'Poppins', sans-serif;
 	font-size:20px;
 	text-align: center;
+}@media only screen and (max-width: 600px){
+	button{
+		width:50px;
+		height:15px;
+		font-size: 10px;
+	}
 }

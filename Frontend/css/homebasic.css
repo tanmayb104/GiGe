@@ -36,10 +36,14 @@ a:hover, a:active{
 #button{
 	margin-left: auto;
 	margin-right: auto;
-	width:150px;
+	width:250px;
 	height:50px;
 }
 button{
+	margin-left: auto;
+	margin-right: auto;
+	width:150px;
+	height:50px;
 	width:150px;
 	height:50px;
 	background: #FFDF00;
@@ -60,3 +64,12 @@ button{
 	border:0px solid;
 	border-radius: 50px;
 }
+@media only screen and (max-width: 600px){
+	.mem2 > img{
+		width:100px;
+		height:100px;
+	}
+	.mem3 > img{
+		width:100px;
+		height:100px;
+	}

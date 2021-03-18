@@ -56,3 +56,6 @@ input[type=submit]:hover{
 	color: #FFDF00;
 	background-color:black;
 }
+iframe{
+	width:100%;
+}
