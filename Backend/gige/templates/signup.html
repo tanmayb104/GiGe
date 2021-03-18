@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sign Up</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	    <link rel="stylesheet" href="{% static '/css/signup.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="whole">
+            <div class="container">
+                <div class="child1">
+                    <h1>Join Us</h1>
+                    <p>Share and Earn</p>
+                    <p style="font-size: 40px;">On your Campus</p>
+                </div>
+                <div class="child">
+                    <form action="register" method="post">
+                        {% csrf_token %}
+
+                        <div class="aligner">
+                            <input type="text" id="fname" name="first_name" required placeholder="First Name">
+                            <input type="text" id="lname" name="last_name" required placeholder="Last Name">
+                            <input type="text" id="username" name="username" required placeholder="User Name">
+                            <input type="password" id="pass1" name="password1" required placeholder="Password">
+                            <input type="password" id="pass2" name="password2" required placeholder="Confirm Password">
+                            <input type="email" id="email" name="email" required placeholder="email">
+                            <input type="tel" id="pno" name="phone_number" required placeholder="Phone Number">
+                            <input type="file" id="avatar" name="profile_pic"accept="image/png, image/jpeg">
+                            <input type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

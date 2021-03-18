@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from .models import Profile
 
 # Create your views here.
 
 def welcome(request):
-    return render(request, 'welcome.html')
+    return render(request, 'home.html')
 
 def login(request):
     
@@ -17,7 +18,8 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            return redirect("/")
+            print("authenticated")
+            return render(request, 'welcome.html')
         else:
             messages.info(request, 'Invalid Credentials')
             return redirect('login')
@@ -34,25 +36,29 @@ def register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
+        phone_number = request.POST['phone_number']
+        profile_pic = request.POST['profile_pic']
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
                 messages.info(request, 'Username Taken')
-                return redirect('register')
+                return redirect('signup')
             elif(User.objects.filter(email=email).exists()):
                 messages.info(request, 'Email Taken')
-                return redirect('register')
+                return redirect('signup')
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
+                user.profile.phone_number = phone_number
+                user.profile.profile_pic = profile_pic
                 user.save()
                 print('user created')
                 return redirect('login')
         else:
             print("Password Not matching")
-            return redirect('register')
+            return redirect('signup')
 
     else:
-        return render(request, 'register.html')
+        return render(request, 'signup.html')
 
 
 def logout(request):

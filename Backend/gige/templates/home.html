@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>GiGe Campus</title>
+	<link rel="stylesheet" href="{% static '/css/homebasic.css' %}">
+	<link rel="stylesheet" href="{% static '/css/home.css' %}">
+	<link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="first" style="height:100%;">
+		<nav class="head">
+			<div id="logo">GiGe</div>
+			<a id="about" href="#ques">About</a>
+			<a id="login" href="#teams">Team</a>
+			<a id="sign" href="{% url 'login' %}">Login</a>
+		</nav>
+		<div class="intro">
+			<div class="message">
+				<p id="top">An ecosystem that thrives on</p>
+				<p id="bottom">people <span style="color:#FFDF00;">helping</span> people</p>
+			</div>
+		<div id="button">
+			<form action="register">
+				<button >Join Us</button>
+			</form>
+		</div>
+	</div>
+	</div>
+	<div class="second">
+		<div class="childf">
+			<p>give and get</p>
+			<p>anytime.</p>
+			<p>anywhere.</p>
+		</div>
+		<div class="childs">
+			<video width="580" height="560" autoplay controls>
+				<source src="{% static '/video/Project (2).mp4' %}" type="video/mp4">
+			</video>
+		</div>
+	</div>
+	<div class="works">
+		<div id="ques"><p>how it works?</p></div>
+	</div>
+	<div class="team" id="teams">
+		<div class="member">team</div>
+		<div class="team-container">
+			<div class="mem2">
+				<img src="{% static '/images/atul.jpeg' %}" width="240px" height="261px" usemap="#image_map">
+					<map name="image_map">
+					  <area alt="Go To My GitHub" title="Go To My GitHub" href="https://github.com/tanmayb104" coords="-1,1,257,132" shape="rect">
+					  <area alt="Go To My Linkedin" title="Go To My Linkedin" href="#" coords="0,133,255,257" shape="rect">
+				</map><br>atul</div>
+			<div class="mem3">
+				<img src="{% static '/images/tanmay.jpeg' %}" width="240px" height="261px" usemap="#image_map">
+					<map name="image_map">
+						<area alt="Go To My GitHub" title="Go To My GitHub" href="https://github.com/atulragarwal" coords="2,2,258,146" shape="rect">
+						<area alt="Go To My Linkedin" title="Go To My Linkedin" href="#" coords="2,150,258,260" shape="rect">
+					</map>
+				<br>tanmay</div>
+		</div>
+		<div class="footer">
+			<div class="footer-container">
+				<div class="comp">
+					<p>Company</p>
+					<p>Team</p>
+					<p>History</p>
+					<p>Contact us</p>
+					<p>Locations</p>
+				</div>
+				<div class="features">
+					<p>Features</p>
+					<p>Cool Stuff</p>
+					<p>GitHub</p>
+				</div>
+				<div class="Resourse">
+					<iframe src="Project (2).mp4"></iframe>
+				</div>
+				<div class="Legal">
+					<p>Privacy Policy</p>
+					<p>Terms Of Use</p>
+				</div>
+			</div>
+			<div class="git">
+				<img src="{% static '/images/Vector.png' %}">
+				<img src="{% static '/images/Vector (1).png' %}">
+				<img src="{% static '/images/Vector (4).png' %}">
+				<img src="{% static '/images/Vector (3).png' %}">
+
+		</div>
+	</div>
+
+</body>
+</html>
