@@ -21,6 +21,7 @@ def login(request):
             print("authenticated")
             return render(request, 'welcome.html')
         else:
+            print("Invalid Credentials")
             messages.info(request, 'Invalid Credentials')
             return redirect('login')
 
@@ -42,10 +43,13 @@ def register(request):
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
                 messages.info(request, 'Username Taken')
-                return redirect('signup')
+                return redirect('register')
             elif(User.objects.filter(email=email).exists()):
                 messages.info(request, 'Email Taken')
-                return redirect('signup')
+                return redirect('register')
+            elif(User.objects.filter(phone_number=phone_number).exists()):
+                messages.info(request, 'Phone Number Taken')
+                return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 user.profile.phone_number = phone_number
@@ -54,8 +58,8 @@ def register(request):
                 print('user created')
                 return redirect('login')
         else:
-            print("Password Not matching")
-            return redirect('signup')
+            messages.info(request, 'Password not matching')
+            return redirect('register')
 
     else:
         return render(request, 'signup.html')

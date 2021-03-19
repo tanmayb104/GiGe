@@ -49,6 +49,11 @@
 						<input type="text" id="username" name="username" required placeholder="User Name">
 						<input type="password" id="password" name="password" required placeholder="Password">
 						<input type="submit">
+						<div style="color: red;">
+							{% for message in messages %}
+								<h3>{{message}}</h3>
+							{% endfor %}
+						</div>
 					</div>
 				</form>
 			</div>
