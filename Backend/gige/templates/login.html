@@ -7,9 +7,33 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static '/css/signup.css' %}">
+	<link rel="stylesheet" href="{% static '/css/homebasic.css' %}">
+	<link rel="stylesheet" href="{% static '/css/home.css' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.head{
+			background-color: black;
+			color:#FFDF00;
+		}
+		.head > a{
+			color:#FFDF00;
+		}
+		.head > a:hover{
+			background-color:#FFDF00;
+			color:black;
+			border-bottom:2px solid black;
+			border-top: 2px solid black;
+		}
+	</style>
 </head>
 <body>
+	<div class="full">
+		<nav class="head">
+			<div id="logo">GiGe</div>
+			<a id="about" href="{% url 'welcome' %}">About</a>
+			<a id="sign" href="{% url 'register' %}">Sign Up</a>
+		</nav>
+	</div>
 	<div class="whole">
 		<div class="container">
 			<div class="child1">
