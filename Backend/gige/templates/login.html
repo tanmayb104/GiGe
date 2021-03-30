@@ -41,7 +41,7 @@
                     <p style="font-size: 40px;">Good to see you again</p>
 			</div>
 			<div class="child">
-				<form method="post" action="login">
+				<form method="post" action="login" onsubmit="return checker()">
 					{% csrf_token %}
 
 					<div class="aligner">
@@ -54,5 +54,15 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		function checker(){
+			var txt = document.getById("username").value;
+			if(txt.length<8)
+			{
+				alert("Username length must be greater than 8");
+				return false
+			}
+		}
+	</script>
 </body>
 </html>
