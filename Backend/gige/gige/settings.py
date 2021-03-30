@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'gige.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'GiGe',
+        'NAME': 'gige',
         'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST':'localhost',
