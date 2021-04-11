@@ -79,6 +79,9 @@ input[type=submit]{
         margin:5px;
         height:20px;
     }
+    .child1{
+        font-size:30px;
+    }
 }
 
 

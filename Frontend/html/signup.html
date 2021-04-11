@@ -4,8 +4,10 @@
         <title>Sign Up</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="stylesheet" href="../css/homebasic.css">
-	<link rel="stylesheet" href="../css/home.css">
+        <link rel="icon" href="../images/Frame.png" type="image">
+	    <link rel="stylesheet" href="../css/home.css">
 	    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <link rel="stylesheet" href="../css/signup.css">
         <style>
             .head{
@@ -39,20 +41,42 @@
                     <p style="font-size: 40px;">On your Campus</p>
                 </div>
                 <div class="child">
-                    <form>
+                    <form onsubmit="return check()">
                         <div class="aligner">
                             <input type="text" id="fname" name="fname" required placeholder="First Name">
                             <input type="text" id="lname" name="lname" required placeholder="Last Name">
                             <input type="text" id="username" name="username" required placeholder="User Name">
+                            <input type="email" id="email" name="email" required placeholder="Email">
                             <input type="password" id="pass1" name="pass1" required placeholder="Password">
                             <input type="password" id="pass2" name="pass2" required placeholder="Confirm Password">
                             <input type="tel" id="pno" name="pno" required placeholder="Phone Number">
                             <input type="file" id="avatar" name="avatar"accept="image/png, image/jpeg">
                             <input type="submit">
+                            <div style="color: black; text-align: center;">
+                                <h3 id="ans"></h3>
+                                <h3 id="ans1"></h3>
+                            </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <script>
+            function check(){
+                var v1=document.getElementById("pass1").value;
+                var v2=document.getElementById("pass2").value;
+                if(v1!=v2){
+                    document.getElementById("ans").innerHTML ="Passwords Don't Match";
+				    return false
+                }
+                var txt = document.getElementById("username").value;
+			    var num = new RegExp("^[0-9]");
+			    if((txt.length<8) || (num.test(txt)))
+			    {
+				    document.getElementById("ans").innerHTML ="Invalid Username";
+				    return false
+			    }
+                }
+        </script>
     </body>
 </html>

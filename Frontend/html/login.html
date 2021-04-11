@@ -39,16 +39,37 @@
                     <p style="font-size: 40px;">Good to see you again</p>
 			</div>
 			<div class="child">
-				<form>
+				<form onsubmit="return checker()">
 					<div class="aligner">
 						<p style="color: black;font-size: 40px;">We just need a few details</p><br>
 						<input type="text" id="username" name="username" required placeholder="User Name">
 						<input type="password" id="pass1" name="pass1" required placeholder="Password">
-						<input type="submit">
+						<input type="submit" value="submit">
+					</div>
+					<div style="color: black; text-align: center;">
+						<h3 id="ans"></h3>
+						<h3 id="ans1"></h3>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	<script>
+		function checker(){
+			var txt = document.getElementById("username").value;
+			var num = new RegExp("^[0-9]");
+			if((txt.length<8) || (num.test(txt)))
+			{
+				document.getElementById("ans").innerHTML ="Invalid Username";
+				return false
+			}
+			var p = document.getElementById("pass1").value;
+			if(p.length<8)
+			{
+				document.getElementById("ans").innerHTML ="Invalid Password";
+				return false
+			}
+		}
+	</script>
 </body>
 </html>
