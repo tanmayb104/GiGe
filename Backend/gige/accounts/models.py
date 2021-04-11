@@ -8,7 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone_number = models.CharField(max_length=12, null=True)
     #location = models.CharField(max_length=50, blank=True)
-    profile_pic = models.ImageField(upload_to ='profile_pic', null=True, blank=True)
+    profile_pic = models.ImageField(upload_to ='profile_pic')
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
