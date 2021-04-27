@@ -10,6 +10,9 @@ class Profile(models.Model):
     #location = models.CharField(max_length=50, blank=True)
     profile_pic = models.ImageField(upload_to ='profile_pic')
 
+    def __str__(self):
+        return self.user.username
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
