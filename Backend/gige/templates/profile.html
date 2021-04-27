@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profile</title>
+        <link rel="stylesheet" href="{% static '/css/home.css' %}">
+	    <link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="{% static 'https://fonts.googleapis.com/css2?family=Poppins&display=swap' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static '/css/profile.css' %}">
+        <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+        <link rel="icon" href="{% static '/images/Frame.png' %}" type="image">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="pcontainer">
+            <div class="pheader">
+                <p id="logo">My Profile</p>
+                <a id="about" href="{% url 'welcome' %}">About</a>
+                <a id="sign" href="{% url 'login' %}">Login</a>
+            </div>
+            <div class="pmenu">
+                <img src="{% static '/images/Frame.png' %}" width="200px">
+                <a id="set" href="#wallet"><img src="{% static '/images/wallet-solid.svg' %}" width="20px" height="18px;" style="margin-right:2px;">My Wallet</a>
+                <a href="#givetr"><img src="{% static '/images/gift-box.svg' %}" width="20px" height="18px;" style="margin-right:2px;">GIVE Transactions</a>
+                <a href="gettr"><img src="{% static '/images/parcel.png' %}" width="20px" height="18px;" style="margin-right:2px;">GET Transactions</a>
+            </div>
+            <div class="pcontent">
+                    <div class="content3">
+                        <div class="userimg">
+                            <img src="media/{{ user.profile.profile_pic }}">
+                        </div>
+                        <div class="deets">
+                            <table>
+                                <tr id="try_bb">
+                                    <th >My Details</th>
+                                    <th style="float:right;"><a href="#"><img src="{% static '/images/edit.png' %}" width="15px" height="15px;">edit</a></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{user.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>{{user.profile.phone_number}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="content4">
+                        <div class="content5">
+                            <table>
+                                <tr>
+                                    <th>My Credentials</th>
+                                    <th style="float:right;"><a href="#"><img src="{% static '/images/edit.png' %}" width="15px" height="15px;">edit</a></th>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{user.username}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{user.first_name}} {{user.last_name}}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="content5">
+                            <p>USERNAME</p>
+                            <p>PASSWORD</p>
+                        </div>
+                    </div>
+            </div>
+            <div class="pfoot">
+            </div>
+        </div>
+    </body>
+</html>

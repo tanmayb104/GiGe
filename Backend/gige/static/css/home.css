@@ -1,0 +1,122 @@
+html,body{
+	height:100%;
+	margin:0;
+}
+.head {
+	display:flex;
+	background-color: #FFDF00;
+}
+#about{
+	margin-left:auto;
+}
+.message{
+	width:90%;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: 'Poppins', sans-serif;
+	font-size: 5vw;
+	text-align: center;
+	font-weight: 200;
+}
+#top{
+	padding-top:5%;
+}
+#bottom{
+	font-weight: 900;
+}
+.first{
+	height:100%;
+}
+.second{
+	background-color: #FFDF00;
+	font-weight: 500;
+	font-family: 'Poppins', sans-serif;
+	font-size: 100px;
+	display:flex;
+}
+.second > p{
+	margin:20px;
+	padding:10px;
+
+}
+.childs{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+#line{
+	font-size: 150px;
+	font-weight:900;
+	margin-bottom:0;
+	padding-bottom:0;
+	width:100%;
+	font-stretch: ultra-expanded;
+}
+
+.team{
+	font-family:'Poppins', sans-serif;
+	height:100%;
+	background-color: #FFDF00;
+}
+.member{
+	font-size:75px;
+	font-weight:700;
+	text-align:center;
+	margin-bottom: 50px;
+}
+.works{
+	height:100%;
+	background-image: url("../images/Features 2.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+#ques{
+	height: 20%;
+	font-family: 'Poppins',sans-serif;
+	font-size: 75px;
+	font-weight:700;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.team-container{
+	text-align:center;
+	display:flex;
+	justify-content:space-around;
+	font-size:50px;
+}
+.footer{
+	background-color: white;
+}
+.footer-container{
+	display:flex;
+	font-family:'Poppins', sans-serif;
+	font-size:20px;
+	justify-content: space-around;
+}
+.git{
+	width:20%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.git img{
+	padding:0px 10px;
+}
+@media only screen and (max-width: 600px){
+	.second{
+		font-size: 50px;
+	}
+	video{
+		width:250px;
+		height:250px;
+	}
+	#ques{
+		font-size: 50px;
+	}
+}
+

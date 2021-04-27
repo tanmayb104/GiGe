@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="preconnect" href="{% static 'https://fonts.gstatic.com' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static '/css/signup.css' %}">
+	<link rel="stylesheet" href="{% static '/css/homebasic.css' %}">
+	<link rel="stylesheet" href="{% static '/css/home.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.head{
+			background-color: black;
+			color:#FFDF00;
+		}
+		.head > a{
+			color:#FFDF00;
+		}
+		.head > a:hover{
+			background-color:#FFDF00;
+			color:black;
+			border-bottom:2px solid black;
+			border-top: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div class="full">
+		<nav class="head">
+			<div id="logo">GiGe</div>
+			<a id="about" href="{% url 'welcome' %}">About</a>
+			<a id="sign" href="{% url 'register' %}">Sign Up</a>
+		</nav>
+	</div>
+	<div class="whole">
+		<div class="container">
+			<div class="child1">
+				<h1>Login</h1>
+                    <p style="font-size: 40px;">Good to see you again</p>
+			</div>
+			<div class="child">
+				<form method="post" action="login" onsubmit="return checker()">
+					{% csrf_token %}
+
+					<div class="aligner">
+						<p style="color: black;font-size: 40px;">We just need a few details</p><br>
+						<input type="text" id="username" name="username" required placeholder="User Name">
+						<input type="password" id="password" name="password" required placeholder="Password">
+						<input type="submit">
+						<div style="color: red;">
+							{% for message in messages %}
+								<h3>{{message}}</h3>
+							{% endfor %}
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script>
+		function checker(){
+			var txt = document.getById("username").value;
+			if(txt.length<8)
+			{
+				alert("Username length must be greater than 8");
+				return false
+			}
+		}
+	</script>
+</body>
+</html>
