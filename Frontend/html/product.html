@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GiGe</title>
+        <title>GET Mode</title>
 	    <link rel="stylesheet" href="../css/home.css">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
 	    <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -9,12 +9,25 @@
         <link rel="stylesheet" href="../css/product.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" href="../images/Frame.png" type="image">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $(".s-new").slideToggle("fast");
+                $("#cat").hover(function(){
+                    $("#cat").css('cursor','pointer');
+                })
+                $("#cat").click(function(){
+                    $(".s-new").slideToggle("slow");
+                });
+            });
+        </script>
         <!-- <script type="text/javascript" src="product.js"></script> -->
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <nav class="head">
 			<div id="logo">GiGe</div>
+            <div id = "cat"><i class="fas fa-filter"></i>Categories</div>
             <form class="search" action="" method="GET">
                 <input type="text" name="search" placeholder="Find Goods and Services in your Campus">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -123,13 +136,13 @@
 				<img src="../images/Vector (1).png">
 				<img src="../images/Vector (4).png">
 				<img src="../images/Vector (3).png">
-		</div>
-	</div>
+		    </div>
+	    </div>
         <script>
-            var sources = ["../images/features 2.png","../images/Frame.png"];
+            var sources = ["../images/features 2.png","../images/Frame.png","../images/annie-spratt-jFtBa6aEJqk-unsplash (1).jpg"];
             var i = 0;
             setInterval(function(){
-                document.getElementById("up_img").src = sources[i%2];
+                document.getElementById("up_img").src = sources[i%3];
                 i = i+1;
             },5000);
         </script>

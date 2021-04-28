@@ -1,0 +1,29 @@
+.item-all{
+    margin-left: auto;
+    margin-right: auto;
+    display:grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 2px;;
+    grid-gap:0px;
+    padding: 0;
+    
+    margin: 0;
+}
+.item-box-1{
+    margin-bottom: 30px;
+    width:60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+h2{
+    font-size: 60px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+h4{
+    margin-top: 10px;
+    font-size: 40px;
+}
+h2,h4{
+    text-align: center;
+}
