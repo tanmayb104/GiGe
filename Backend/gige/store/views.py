@@ -12,13 +12,14 @@ def get(request):
     categoryItems = {}
     for i in categories:
         categoryItems[i] = items.filter(category=i)
-    data = {"user": user[0], "items": items}
+        print(len(categoryItems[i]))
+    data = {"user": user, "items": categoryItems}
     return render(request, 'get.html', data)
 
 def give(request):
     user = User.objects.get(username=request.user.username)
     items =  Item.objects.filter(owner=request.user.id)
-    data = {"user": user[0], "items": items}
+    data = {"user": user, "items": items}
     return render(request, 'give.html', data)
 
 def itemView(request,pk):
