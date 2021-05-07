@@ -18,14 +18,16 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            print("authenticated")
+            messages.info(request, 'Logged in successfully')
+            print("Invalid Credentialssss")
             return render(request, 'welcome.html')
         else:
-            print("Invalid Credentials")
             messages.info(request, 'Invalid Credentials')
+            print("Invalid Credentials")
             return redirect('login')
 
     else:
+        print("Invalid Credentia")
         return render(request, 'login.html')
 
 def register(request):
@@ -55,7 +57,7 @@ def register(request):
                 user.profile.phone_number = phone_number
                 user.profile.profile_pic = profile_pic
                 user.save()
-                print('user created')
+                messages.info(request, 'Registered successfully')
                 return redirect('login')
         else:
             messages.info(request, 'Password not matching')
@@ -67,7 +69,8 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    messages.info(request, 'Logged out successfully')
+    return redirect(request,'welcome')
 
 
 def profile(request):
