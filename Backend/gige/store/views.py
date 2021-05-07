@@ -47,7 +47,7 @@ def categoryView(request,pk):
         return render(request, 'login.html')
 
     user = User.objects.get(username=request.user.username)
-    item =  Item.objects.filter(category=pk)
+    item =  Item.objects.filter(category=pk).exclude(owner=request.user.id)
     data = {"user": user, "items": item}
     return render(request, 'categoryView.html', data)
 

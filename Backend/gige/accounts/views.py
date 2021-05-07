@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import Profile
+from store.views import get
 
 # Create your views here.
 
@@ -19,20 +20,18 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.info(request, 'Logged in successfully')
-            print("Invalid Credentialssss")
-            return render(request, 'welcome.html')
+            return redirect('get')
         else:
             messages.info(request, 'Invalid Credentials')
-            print("Invalid Credentials")
             return redirect('login')
 
     else:
-        print("Invalid Credentia")
         return render(request, 'login.html')
 
 def register(request):
 
     if (request.method == 'POST'):
+        print("Asdbjasbdjk")
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
