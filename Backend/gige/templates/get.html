@@ -21,9 +21,9 @@
                 <input type="text" name="search" placeholder="Find Goods and Services in your Campus">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
-			<a class="about" href="#ques">Switch To Give</a>
+			<a class="about" href="{% url 'give' %}">Switch To Give</a>
             <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
-			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
+			<a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
             <a class="sign" href="#dropdown?"><i class="fa fa-bars"></i></a>
 		</nav>
         <div class="s-new">
@@ -41,7 +41,7 @@
             <div class = "items-disp">
                 <div class="cat-disp">
                     <p>{{ category }}</p>
-                    <a href="" id="righter">See More</a>
+                    <a href="/store/get/{{category}}" id="righter">See More</a>
                 </div>
                 <div class="item-box">
                     {% for item in item_set %}
@@ -49,7 +49,7 @@
                             <img src = "/media/{{ item.item_pic }}">
                             <img id="user" alt = "error" src = "/media/{{ item.owner.profile.profile_pic }}"><h3>{{item.name}}</h3><br>
                             <h5>{{item.price}}</h5>
-                            <a style="float: right;" href="">GET</a>
+                            <a style="float: right;" href="/store/get/item/{{item.id}}">GET</a>
                         </div>
                     {% endfor %}
                 </div>

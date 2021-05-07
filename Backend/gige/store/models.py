@@ -31,9 +31,8 @@ class Transaction(models.Model):
 
     item = models.OneToOneField(Item, on_delete=models.SET_NULL, blank=True, null=True)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="getter")
-    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="giver")
     date_ordered = models.DateTimeField(auto_now_add=True)
-    transaction_id = models.CharField(max_length=200, primary_key=True)
+    transaction_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     def __str__(self):
         return self.transaction_id
