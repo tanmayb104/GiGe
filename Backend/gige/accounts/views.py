@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import Profile
+from store.views import get
 
 # Create your views here.
 
@@ -18,10 +19,9 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            print("authenticated")
-            return render(request, 'welcome.html')
+            messages.info(request, 'Logged in successfully')
+            return redirect('get')
         else:
-            print("Invalid Credentials")
             messages.info(request, 'Invalid Credentials')
             return redirect('login')
 
@@ -31,6 +31,7 @@ def login(request):
 def register(request):
 
     if (request.method == 'POST'):
+        print("Asdbjasbdjk")
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
@@ -55,7 +56,7 @@ def register(request):
                 user.profile.phone_number = phone_number
                 user.profile.profile_pic = profile_pic
                 user.save()
-                print('user created')
+                messages.info(request, 'Registered successfully')
                 return redirect('login')
         else:
             messages.info(request, 'Password not matching')
@@ -67,7 +68,8 @@ def register(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    messages.info(request, 'Logged out successfully')
+    return redirect(request,'welcome')
 
 
 def profile(request):
