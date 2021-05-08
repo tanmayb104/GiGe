@@ -49,7 +49,7 @@
                             <img src = "/media/{{ item.item_pic }}">
                             <img id="user" alt = "error" src = "/media/{{ item.owner.profile.profile_pic }}"><h3>{{item.name}}</h3><br>
                             <h5>{{item.price}}</h5>
-                            <a style="float: right;" href="/store/get/item/{{item.id}}">GET</a>
+                            <a style="float: right;" href="item/{{item.id}}">GET</a>
                         </div>
                     {% endfor %}
                 </div>

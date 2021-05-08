@@ -1,12 +1,12 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html>
     <head>
         <title>GiGe</title>
         <link rel="stylesheet" href="{% static '/css/view.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
+        <link rel="stylesheet" href="{% static '/css/signup.css' %}">
         <link rel="stylesheet" href="{% static '/css/product.css' %}">
+        <link rel="stylesheet" href="{% static '/css/edit.css' %}">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
@@ -24,22 +24,18 @@
 			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
             <a class="sign" href="#dropdown?"><i class="fa fa-bars"></i></a>
         </div>
-        <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Product</h2></div>
+        <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
         <div class="prod-det">
             <div class="prod-img">
-                <img src="/media/{{ item.item_pic }}">
+                <img src="{% static '/images/cycle.jpg' %}">
             </div>
             <div class="det">
-                <h2>{{item.name}}</h2>
-                <p id="des">{{item.description}}</p>
-                <img src="/media/{{ item.owner.profile.profile_pic }}" style="margin-right: 5px;" width="50px" height="50px" id="s-icon"><p id="s-name">{{ item.owner.username }}</p>
-                <br>
                 <section id="additional-det">
                     <table>
                         <tbody>
                             <tr>
-                                <th class="det-col-1">Price</th>
-                                <th class="det-col-2">{{item.price}}</th>
+                                <th class="det-col-1">Name</th>
+                                <th class="det-col-2"><input type="text" required value="Zero 2 One Book" id="e-name"></th>
                             </tr>
                             <tr>
                                 <td class="det-space"></td>
@@ -47,27 +43,43 @@
                             </tr>
                             <tr>
                                 <th class="det-col-1">Days</th>
-                                <th class="det-col-2">{{item.days}}</th>
+                                <th class="det-col-2"><input type="number" required value="3" id="e-day"></th>
                             </tr>
                             <tr>
                                 <td class="det-space"></td>
                                 <td class="det-space"></td>
                             </tr>
                             <tr>
-                                <th class="det-col-1">Location</th>
-                                <th class="det-col-2">{{item.owner.profile.location}}</th>
+                                <th class="det-col-1">Price</th>
+                                <th class="det-col-2"><input type="number" required value="100" id="e-proce"></th>
+                            </tr>
+                            <tr>
+                                <td class="det-space"></td>
+                                <td class="det-space"></td>
+                            </tr>
+                            <tr>
+                                <th class="det-col-1">Status</th>
+                                <th class="det-col-2"><input type="text" required value="Active" id="e-sat"></th>
+                            </tr>
+                            <tr>
+                                <td class="det-space"></td>
+                                <td class="det-space"></td>
+                            </tr>
+                            <tr>
+                                <th class="det-col-1">Total Orders</th>
+                                <th class="det-col-2">7</th>
                             </tr>
                         </thead>
                     </table>
                 </section>
                 <section id="click">
-                    <button>Rent It!</button>
+                    <button>Edit!</button>
                 </section>
             </div>
         </div>
-        <div class="des-prod">
+        <div class="des-prod" >
             <h2>Description</h2>
-            <p>{{item.description}}</p>
+            <textarea rows="5" cols="500" id="e-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.</textarea>
         </div>
     </body>
 </html>

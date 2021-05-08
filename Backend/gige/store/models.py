@@ -16,6 +16,7 @@ class Item(models.Model):
     price = models.IntegerField()
     digital = models.BooleanField()
     status = models.BooleanField(default=False)
+    days = models.IntegerField()
 
     categories=[
         ("General", "General"),

@@ -38,7 +38,7 @@ def itemView(request,pk):
 
     user = User.objects.get(username=request.user.username)
     item =  Item.objects.get(id=pk)
-    data = {"user": user, "items": item}
+    data = {"user": user, "item": item}
     return render(request, 'itemView.html', data)
 
 def categoryView(request,pk):
@@ -57,13 +57,14 @@ def itemAdd(request):
         return render(request, 'login.html')
 
     if (request.method == 'POST'):
-        name = request.POST['name']
-        description = request.POST['description']
+        print("reached")
+        name = request.POST['pname']
+        description = request.POST['pdes']
         item_pic = request.POST['item_pic']
         owner = request.user.id
-        price = request.POST['price']
-        digital = request.POST['digital']
-        category = request.POST['category']
+        price = request.POST['pcost']
+        digital = request.POST['pdig']
+        category = request.POST['pcat']
 
         item,created = Item.objects.get_or_create(name=name, description=description, item_pic=item_pic, owner=owner, price=price, digital=digital, status=False, category=category)
         if(created):
@@ -133,7 +134,7 @@ def itemEdit(request,pk):
     
     else:
 
-        return render(request, 'giveItem.html')
+        return render(request, 'edit.html')
 
 
 
