@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Product</title>
+        <link rel="stylesheet" href="../css/give.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="../css/addproduct.css" rel="stylesheet">
+        <link rel="icon" href="../images/Frame.png" type="image">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="cont-main">
+            <div class="user-nav">
+                <p id="txt">Add New Product</p>
+                <a class="rem" href="#">Go Back</a>
+                <a class="rem" href="#"><i class="fa fa-user"></i></a>
+            </div>
+            <div id="logo">
+                <img src="../images/Frame.png"height="100px" width="100px" >
+            </div>
+        <div class="cont-con">
+            <h2>What's The Product?</h2>
+            <h4>It's Simple. Complete the form bellow click submit and Voila, your product is good to go!</h4>
+            <form>
+                <div class="aligner">
+                    <span>
+                        <label for="pname">Name:</label>
+                        <input class="i-full" type="text" id="pname" name="pname" required placeholder="Product Name">
+                    </span>
+                    <span>
+                        <Label for="pdes">Description:</Label>
+                        <input class="i-full" type="text" id="pdes" name="pdes" required placeholder="Product Description">
+                    </span>
+                    <span>
+                        <label for="pcost">Cost:</label>
+                        <input class="i-half" type="number" id="pcost" name="pcost" required placeholder="Cost Per Day">
+                        <label for="pday">Days:</label>
+                        <input class="i-half" type="number" id="pday" name="pday" required placeholder="Days">
+                    </span>
+                    <span>
+                        <label for="pcat">Category:</label>
+                        <select>
+                            <option id="first">Select a Category</option>
+                            <option value="electronic">Electronics</option>
+                            <option value="academic">Academic</option>
+                            <option value="sport">Sports</option>
+                            <option value="general">General</option>
+                        </select>
+                    </span>
+                    <span>
+                        Digital:
+                        <input type="radio" id="ra1" name="pdig" required value="Yes">Yes
+                        <input type="radio" id="ra2" name="pdig" required value="No">No
+                    </span>
+                    <span>
+                        <img src="" id="img-af" width="100px" height="100px" style="display: none;">
+                        <label id="img-bef" for="pimg"><i class="fas fa-images"></i>Add Image</label>
+                        <input type="file" name="pimg" id="pimg" required style="display: none;" onchange="dispimg(event)">
+                    </span>
+                    <span>
+                        <input type="submit">
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var dispimg = function (event)
+            {
+                var disp = document.getElementById("img-af");
+                var out = event.target.files[0];
+                disp.style.display = "block";
+                disp.src = URL.createObjectURL(out);
+                document.getElementById("img-bef").style.display = "none";
+            };
+    </script>
+    </body>
+</html>

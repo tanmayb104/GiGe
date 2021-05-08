@@ -1,0 +1,18 @@
+.det-col-2{
+    background-color: white;
+    width: 100%;
+}
+.det-col-1{
+    width: 20%;
+}
+.td{
+    height: 10px;
+}
+.des-prod{
+    font-size: 30px;
+}
+textarea{
+    font-family: 'Poppins',sans-serif;
+    width: 100%;
+    font-size: 15px;
+}

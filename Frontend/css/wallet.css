@@ -1,0 +1,77 @@
+.wal-det{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width:85%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.wal-bal{
+    width:25%;
+}
+
+.wal-bal > div{
+    height: 100px;
+    margin-top: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+.wal-cen{
+    text-align: center;
+}
+.wal-trans{
+    display: inline-block;
+    width:70%;
+}
+h3{
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.col-1{
+    width: 15%;
+    padding:5px;
+}
+.col-2{
+    width: 30%;
+    padding:5px;
+}
+.col-3{
+    width: 15%;
+    padding:5px;
+}
+.col-4{
+    width: 10%;
+    padding:5px;
+}
+.col-5{
+    width: 10%;
+    padding:5px;
+}
+table{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+thead{
+    height: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    outline: 2px solid;
+}
+#t-try{
+    height: 10px;
+    background-color: white;
+}
+.it-row{
+    margin-top: 10px;
+    height: 30px;
+    font-size: 20px;
+    outline: 2px solid;
+}
