@@ -28,6 +28,7 @@
             <h2>What's The Product?</h2>
             <h4>It's Simple. Complete the form bellow click submit and Voila, your product is good to go!</h4>
             <form method="post" action="">
+                {% csrf_token %}
                 <div class="aligner">
                     <span>
                         <label for="pname">Name:</label>
@@ -44,18 +45,18 @@
                         <input class="i-half" type="number" id="pday" name="pday" required placeholder="Days">
                     </span>
                     <span>
-                        <label for="pcat">Category:</label>
+                        <label for="pcat" name="pcat">Category:</label>
                         <select>
                             <option id="first">Select a Category</option>
-                            <option value="Electronic">Electronic</option>
-                            <option value="Books">Books</option>
-                            <option value="General">General</option>
+                            <option value="Electronic" name="pcat">Electronic</option>
+                            <option value="Books" name="pcat">Books</option>
+                            <option value="General" name="pcat">General</option>
                         </select>
                     </span>
                     <span>
                         Digital:
-                        <input type="radio" id="ra1" name="pdig" required value="Yes">Yes
-                        <input type="radio" id="ra2" name="pdig" required value="No">No
+                        <input type="radio" id="ra1" name="pdig" required value="True">Yes
+                        <input type="radio" id="ra2" name="pdig" required value="False">No
                     </span>
                     <span>
                         <img src="" id="img-af" width="100px" height="100px" style="display: none;">

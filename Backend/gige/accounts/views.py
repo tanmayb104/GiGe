@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import Profile
 from store.views import get
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -19,17 +20,17 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.info(request, 'Logged in successfully')
+            messages.success(request, 'Logged in successfully')
             return redirect('get')
         else:
-            messages.info(request, 'Invalid Credentials')
+            messages.error(request, 'Invalid Credentials')
             return redirect('login')
 
     else:
         return render(request, 'login.html')
 
 def register(request):
-
+    print("Asdbjasbdjk")
     if (request.method == 'POST'):
         print("Asdbjasbdjk")
         first_name = request.POST['first_name']
@@ -43,81 +44,78 @@ def register(request):
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
-                messages.info(request, 'Username Taken')
+                messages.error(request, 'Username Taken')
                 return redirect('register')
             elif(User.objects.filter(email=email).exists()):
-                messages.info(request, 'Email Taken')
+                messages.error(request, 'Email Taken')
                 return redirect('register')
             elif(Profile.objects.filter(phone_number=phone_number).exists()):
-                messages.info(request, 'Phone Number Taken')
+                messages.error(request, 'Phone Number Taken')
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 user.profile.phone_number = phone_number
                 user.profile.profile_pic = profile_pic
                 user.save()
-                messages.info(request, 'Registered successfully')
+                messages.success(request, 'Registered successfully')
                 return redirect('login')
         else:
-            messages.info(request, 'Password not matching')
+            messages.error(request, 'Password not matching')
             return redirect('register')
 
     else:
         return render(request, 'signup.html')
 
 
+@login_required
 def logout(request):
     auth.logout(request)
-    messages.info(request, 'Logged out successfully')
+    messages.success(request, 'Logged out successfully')
     return redirect(request,'welcome')
 
 
+@login_required
 def profile(request):
 
-    if request.user.is_authenticated:
+    if (request.method == 'POST'):
 
-        if (request.method == 'POST'):
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        email = request.POST['email']
+        phone_number = request.POST['phone_number']
+        profile_pic = request.POST['profile_pic']
 
-            first_name = request.POST['first_name']
-            last_name = request.POST['last_name']
-            username = request.POST['username']
-            password1 = request.POST['password1']
-            password2 = request.POST['password2']
-            email = request.POST['email']
-            phone_number = request.POST['phone_number']
-            profile_pic = request.POST['profile_pic']
-
-            if(password1==password2):
-                if(User.objects.filter(username=username).exists() and username!=request.user.username):
-                    messages.info(request, 'Username Taken')
-                    return redirect('profile')
-                elif(User.objects.filter(email=email).exists() and email!=request.user.email):
-                    messages.info(request, 'Email Taken')
-                    return redirect('profile')
-                elif(User.objects.filter(phone_number=phone_number).exists()):
-                    messages.info(request, 'Phone Number Taken')
-                    return redirect('profile')
-                else:
-                    user = User.objects.get(username = request.user.username)
-                    user.first_name = first_name
-                    user.last_name = last_name
-                    user.username = username
-                    user.email = email
-                    user.profile.phone_number = phone_number
-                    user.profile.profile_pic = profile_pic
-                    user.set_password(password1)
-                    user.save()
-                    print('user profile changed')
-                    return redirect('profile')
-            else:
-                messages.info(request, 'Password not matching')
+        if(password1==password2):
+            if(User.objects.filter(username=username).exists() and username!=request.user.username):
+                messages.error(request, 'Username Taken')
                 return redirect('profile')
-
-
+            elif(User.objects.filter(email=email).exists() and email!=request.user.email):
+                messages.error(request, 'Email Taken')
+                return redirect('profile')
+            elif(User.objects.filter(phone_number=phone_number).exists()):
+                messages.error(request, 'Phone Number Taken')
+                return redirect('profile')
+            else:
+                user = User.objects.get(username = request.user.username)
+                user.first_name = first_name
+                user.last_name = last_name
+                user.username = username
+                user.email = email
+                user.profile.phone_number = phone_number
+                user.profile.profile_pic = profile_pic
+                user.set_password(password1)
+                user.save()
+                messages.success(request, 'Profile edited successfully')
+                return redirect('profile')
         else:
-            user = User.objects.filter(username=request.user.username)
-            profile={"user": user[0]}
-            return render(request, 'profile.html', profile)
-    else:
-        return render(request, 'login.html')
+            messages.error(request, 'Password not matching')
+            return redirect('profile')
 
+
+    else:
+        user = User.objects.filter(username=request.user.username)
+        profile={"user": user[0]}
+        return render(request, 'profile.html', profile)

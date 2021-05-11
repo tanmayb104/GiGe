@@ -42,7 +42,7 @@
                     <p style="font-size: 40px;">On your Campus</p>
                 </div>
                 <div class="child">
-                    <form action="register" method="post">
+                    <form action="{% url 'register' %}" method="post">
                         {% csrf_token %}
 
                         <div class="aligner">
