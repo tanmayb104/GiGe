@@ -51,14 +51,18 @@
                             <input type="text" id="username" name="username" required placeholder="User Name">
                             <input type="password" id="pass1" name="password1" required placeholder="Password">
                             <input type="password" id="pass2" name="password2" required placeholder="Confirm Password">
-                            <input type="email" id="email" name="email" required placeholder="email">
+                            <input type="email" id="email" name="email" required placeholder="Email address">
                             <input type="tel" id="pno" name="phone_number" required placeholder="Phone Number">
                             <input type="file" id="avatar" name="profile_pic"accept="image/png, image/jpeg">
                             <input type="submit">
                             <div style="color: red;">
-                                {% for message in messages %}
-                                    <h3>{{message}}</h3>
-                                {% endfor %}
+                            {% if messages %}
+								<ul class="messages">
+									{% for message in messages %}
+										<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
                             </div>
                         </div>
                     </form>

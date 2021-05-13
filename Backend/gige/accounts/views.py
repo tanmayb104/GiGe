@@ -30,9 +30,7 @@ def login(request):
         return render(request, 'login.html')
 
 def register(request):
-    print("Asdbjasbdjk")
     if (request.method == 'POST'):
-        print("Asdbjasbdjk")
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         username = request.POST['username']
@@ -71,7 +69,7 @@ def register(request):
 def logout(request):
     auth.logout(request)
     messages.success(request, 'Logged out successfully')
-    return redirect(request,'welcome')
+    return render(request, 'home.html')
 
 
 @login_required
@@ -79,39 +77,31 @@ def profile(request):
 
     if (request.method == 'POST'):
 
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
         username = request.POST['username']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
         email = request.POST['email']
         phone_number = request.POST['phone_number']
         profile_pic = request.POST['profile_pic']
 
-        if(password1==password2):
-            if(User.objects.filter(username=username).exists() and username!=request.user.username):
-                messages.error(request, 'Username Taken')
-                return redirect('profile')
-            elif(User.objects.filter(email=email).exists() and email!=request.user.email):
-                messages.error(request, 'Email Taken')
-                return redirect('profile')
-            elif(User.objects.filter(phone_number=phone_number).exists()):
-                messages.error(request, 'Phone Number Taken')
-                return redirect('profile')
-            else:
-                user = User.objects.get(username = request.user.username)
-                user.first_name = first_name
-                user.last_name = last_name
-                user.username = username
-                user.email = email
-                user.profile.phone_number = phone_number
-                user.profile.profile_pic = profile_pic
-                user.set_password(password1)
-                user.save()
-                messages.success(request, 'Profile edited successfully')
-                return redirect('profile')
+        if(User.objects.filter(username=username).exists() and username!=request.user.username):
+            messages.error(request, 'Username Taken')
+            return redirect('profile')
+        elif(User.objects.filter(email=email).exists() and email!=request.user.email):
+            messages.error(request, 'Email Taken')
+            return redirect('profile')
+        elif(User.objects.filter(phone_number=phone_number).exists()):
+            messages.error(request, 'Phone Number Taken')
+            return redirect('profile')
         else:
-            messages.error(request, 'Password not matching')
+            user = User.objects.get(username = request.user.username)
+            user.first_name = first_name
+            user.last_name = last_name
+            user.username = username
+            user.email = email
+            user.profile.phone_number = phone_number
+            user.profile.profile_pic = profile_pic
+            user.set_password(password1)
+            user.save()
+            messages.success(request, 'Profile edited successfully')
             return redirect('profile')
 
 

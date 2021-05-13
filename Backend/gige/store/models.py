@@ -32,10 +32,13 @@ class Item(models.Model):
 
 
 class Transaction(models.Model):
+
     item = models.OneToOneField(Item, on_delete=models.SET_NULL, blank=True, null=True)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="getter")
     date_ordered = models.DateTimeField(auto_now_add=True)
     transaction_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    otp1=models.CharField(max_length=6, unique=True, default=uuid.uuid4)
+    otp2=models.CharField(max_length=6, unique=True, default=uuid.uuid4)
 
 
     def __str__(self):
@@ -43,10 +46,11 @@ class Transaction(models.Model):
 
 
 class Todoitem(models.Model):
+    
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     heading = models.CharField(max_length=100)
-
+    
 
     def __str__(self):
         return f"{self.heading}-{self.user}"

@@ -15,7 +15,6 @@ def get(request):
     categoryItems = {}
     for i in categories:
         categoryItems[i] = items.filter(category=i).reverse()
-        print(len(categoryItems[i]))
     data = {"user": user, "items": categoryItems}
     return render(request, 'get.html', data)
 
@@ -44,7 +43,7 @@ def categoryView(request,pk):
 
     user = User.objects.get(username=request.user.username)
     item =  Item.objects.filter(category=pk).exclude(owner=request.user.id)
-    data = {"user": user, "items": item}
+    data = {"user": user, "items": item, "category":pk}
     return render(request, 'categoryView.html', data)
 
 
@@ -52,7 +51,6 @@ def categoryView(request,pk):
 def itemAdd(request):
 
     if (request.method == 'POST'):
-        print(request.POST)
         name = request.POST['pname']
         description = request.POST['pdes']
         item_pic = request.POST['pimg']

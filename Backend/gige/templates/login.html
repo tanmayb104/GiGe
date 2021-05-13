@@ -41,7 +41,7 @@
                     <p style="font-size: 40px;">Good to see you again</p>
 			</div>
 			<div class="child">
-				<form method="post" action="">
+				<form method="post" action="{% url 'login' %}">
 					{% csrf_token %}
 
 					<div class="aligner">
@@ -50,9 +50,13 @@
 						<input type="password" id="password" name="password" required placeholder="Password">
 						<input type="submit">
 						<div style="color: red;">
-							{% for message in messages %}
-								<h3>{{message}}</h3>
-							{% endfor %}
+							{% if messages %}
+								<ul class="messages">
+									{% for message in messages %}
+										<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
 						</div>
 					</div>
 				</form>

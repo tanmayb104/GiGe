@@ -28,34 +28,31 @@
         <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Profile</h2></div>
         <div class="prof-det">
             <div class="user-img">
-                <img src="{% static '/images/atul_260x261.jpeg' %}">
+                <img src="/media/{{ user.profile.profile_pic }}">
             </div>
             <div class="user-det">
-                <form>
+                <form method="post" action="{% url 'profile' %}">
+                    {% csrf_token %}
                     <table>
                         <tr>
-                            <th class="det-col-1">Name</th>
-                            <td><input type="text" required id="u-name" value="Atul Agarwal"></td>
+                            <th class="det-col-1">Username</th>
+                            <td><input type="text" required id="u-name" name="username" value="{{user.username}}"></td>
                         </tr>
                         <tr>
                             <th class="det-col-1">Email</th>
-                            <td><input type="email" required id="u-email" value="atulagarwal0721@gmail.com"></td>
+                            <td><input type="email" required id="u-email" name="email" value="{{user.email}}"></td>
                         </tr>
                         <tr>
                             <th class="det-col-1">Phone Number</th>
-                            <td><input type="text" required id="u-no" value="8879728598"></td>
+                            <td><input type="text" required id="u-no" name="phone_number" value="{{user.profile.phone_number}}"></td>
                         </tr>
                         <tr>
-                            <th class="det-col-1">Bate of Birth</th>
+                            <th class="det-col-1">Date of Birth</th>
                             <td><input type="text" required id="u-dob" value="7 Oct 2001"></td>
                         </tr>
                         <tr>
-                            <th class="det-col-1">College</th>
-                            <td><input type="text" required id="u-loc" value="VIT Vellore"></td>
-                        </tr>
-                        <tr>
                             <th class="det-col-1">Address</th>
-                            <td><textarea rows="3" cols="80" id="u-add">consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. </textarea></td>
+                            <td><textarea rows="3" cols="80" id="u-add">{{user.profile.location}}</textarea></td>
                         </tr>
                     </table>
                     <div id="p-but">
