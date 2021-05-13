@@ -5,7 +5,7 @@
         <link rel="stylesheet" href="../css/home.css">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        
+        <link rel="stylesheet" href="../css/give.css">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../css/product.css">
         <link rel="stylesheet" href="../css/category.css">
@@ -15,8 +15,8 @@
     </head>
     <body>
         <nav class="head">
-			<div id="logo">GiGe</div>
-            <a href="product.html" id = "cat"><i class="fas fa-home"></i>HOME</a>
+			<div id="logo"><img src="../images/Frame.png" height="75px" width="75px"></div>
+            <button  onclick="back()" id = "cat"><i class="fas fa-home"></i>HOME</button>
             <form class="search" action="" method="GET">
                 <input type="text" name="search" placeholder="Search In Category...">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -28,49 +28,104 @@
 		</nav>
         <div class = "cat-cont">
             <h2>Electronics</h2>
-            <h4>Showing All 15 Products in Electronics</h4>
             <div class = "item-all">
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/headphone.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/cricket.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/notes.jfif" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/cycle.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/cycle.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/cycle.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
                 <div class="item-box-1">
-                    <img src = "../images/headphone.jpg">
-                    <img id="user" src = "../images/aadi_260x261.jpeg"><h3>Headphones</h3><br>
-                    <h5>500 for 5 Days</h5>
-                    <a style="float: right;" href="">GET</a>
+                    <img id="main-img" src="../images/cycle.jpg" width="250px" height="200px">
+                    <div id="p-hide">
+                        <img id="sec-img" src="../images/atul_260x261.jpeg" width="20px" height="20px" style="margin-right:3px">
+                        Harry Potter Book and the half blood prince
+                    </div>
+                    <table>
+                        <tr>
+                            <td>500</td>
+                            <td>5 Days</td>
+                        </tr>
+                    </table>
+                    <a href="#" id="p-a">GET</a>
                 </div>
             </div>
         </div>
@@ -100,5 +155,10 @@
 				<img src="../images/Vector (3).png">
 		    </div>
 	    </div>
+        <script>
+            const back = () =>{
+                window.history.back();
+            }
+        </script>
     </body>
 </html>

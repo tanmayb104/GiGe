@@ -73,6 +73,7 @@ a:hover, a:active{
     display: none;
   }
 #task-head{
+    text-align: center;
     margin-top: 0;
     background-color: black;
     color: white;
@@ -117,14 +118,21 @@ a:hover, a:active{
 .item-box{
     display: inline-block;
     box-shadow: 2px 2px 2px 2px;
-    cursor: pointer;
+    width: 250px;
+    height: 310px;
     margin: 40px;
-}
-.item-box > p{
-    display: inline-block;
-    font-weight: 550;
     font-size: 20px;
-    margin-left:3px;
+    transition: border 1s;
+}
+#p-hide{
+    margin-top: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.item-box:hover{
+    box-shadow: none;
+    border: 4px solid;
 }
 #main-img{
     display: block;
@@ -133,4 +141,18 @@ a:hover, a:active{
     margin-left: 10px;
     border-radius: 50%;
     border: 2px solid;
+}
+#tex-set{
+    text-overflow: ellipsis;
+    height: 20px;
+}
+#p-a{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #FFDF00;
+    color: black;
+    font-family: 'Poppins',sans-serif;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }

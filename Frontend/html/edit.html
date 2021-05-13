@@ -15,19 +15,23 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
+        <form>
         <div class = "nav-all">
             <div class="brand">
                 <img src = "../images/Frame.png" width="100px" height="100px">
             </div>
-            <a style="margin-left: auto;font-size: 25px;" href="#ques">Go Back</a>
+            <p>Edit Product</p>
+            <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
+            <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
             <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
 			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fa fa-bars"></i></a>
+            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
         <div class="prod-det">
             <div class="prod-img">
-                <img src="../images/cycle.jpg">
+                <label for="p-img"><img id="img-s" src="../images/cycle.jpg"></label>
+                <input type="file" onchange="update_img(event)" style="display: none;" id="p-img" name="p-img">
             </div>
             <div class="det">
                 <section id="additional-det">
@@ -73,7 +77,7 @@
                     </table>
                 </section>
                 <section id="click">
-                    <button>Edit!</button>
+                    <input type="submit">
                 </section>
             </div>
         </div>
@@ -81,5 +85,17 @@
             <h2>Description</h2>
             <textarea rows="5" cols="500" id="e-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.</textarea>
         </div>
+    </form>
+    <script>
+        const back = () =>{
+            window.history.back();
+        };
+        const update_img = (event) =>{
+            var d_img = document.getElementById("img-s");
+            var out = event.target.files[0];
+            d_img.src = URL.createObjectURL(out);
+
+        }
+    </script>
     </body>
 </html>

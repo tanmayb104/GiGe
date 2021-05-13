@@ -57,10 +57,22 @@ thead{
 }
 #t-try{
     height: 10px;
+    background-color: white;
 }
 .it-row{
     margin-top: 10px;
     height: 30px;
     font-size: 20px;
     outline: 2px solid;
+}
+button{
+    width:150px;
+    text-align: center;
+    background-color: #FFDF00;
+    color: black;
+}
+button:hover{
+    background-color: #FFDF00;
+    color: black;
+    border:2px solid black;
 }
