@@ -3,31 +3,33 @@
     <head>
         <title>GiGe</title>
         <link rel="stylesheet" href="../css/view.css">
+        <link rel="stylesheet" href="../css/active.css">
         <link rel="stylesheet" href="../css/home.css">
         <link rel="stylesheet" href="../css/product.css">
+        <link rel="stylesheet" href="../css/order.css">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="icon" href="../images/Frame.png" type="image">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href="../css/active.css">
     </head>
     <body>
         <div class = "nav-all">
             <div class="brand">
                 <img src = "../images/Frame.png" width="100px" height="100px">
             </div>
-            <p style="font-size: 35px;margin-left: 10px;">Active GIVES</p>
-            <button onclick="back()" style="margin-left: auto;font-size: 25px;">Go Back</button>
-            <a href="#" style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</a>
+            <p style="font-size: 50px; margin-left: 10px;">Orders</p>
+            <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
+            <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
             <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
 			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-out-alt"></i></a>
+            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div class="ac-cont">
             <div class="ac-head">
-                <p>Active Gives</p>
+                <i class="fas fa-arrow-circle-left"></i>
+                <p>Orders</p>
             </div>
             <div class="ac-table">
                 <table>
@@ -35,9 +37,11 @@
                         <tr>
                             <th class="col-1"></th>
                             <th class="col-2">Title</th>
-                            <th class="col-3">Total Earnings</th>
-                            <th class="col-4">Active For</th>
+                            <th class="col-3">Buyer</th>
+                            <th class="col-4">Total</th>
                             <th class="col-5"></th>
+                            <th class="col-6"></th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -51,9 +55,10 @@
                         <tr class="it-row">
                             <td class="col-1"><img src="../images/cycle.jpg" width="50px" height="50px"></td>
                             <td class="col-2">Headphones</td>
-                            <td class="col-3">2000</td>
-                            <td class="col-4">30 Days</td>
-                            <td class="col-5">Edit</td>
+                            <td class="col-3">Active</td>
+                            <td class="col-4">3</td>
+                            <td class="col-5">15</td>
+                            <td class="col-6"></td>
                         </tr>
                         <tr id="t-try">
                             <td></td>
@@ -116,8 +121,15 @@
             </div>
         </div>
         <script>
-            const back = () =>
+            const back = () =>{
                 window.history.back();
+            };
+            const update_img = (event) =>{
+                var d_img = document.getElementById("img-s");
+                var out = event.target.files[0];
+                d_img.src = URL.createObjectURL(out);
+    
+            }
         </script>
     </body>
 </html>

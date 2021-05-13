@@ -6,7 +6,7 @@
 	margin-right: auto;
 	margin-top: 20px;
 }
-.user-img > img{
+#img-s{
 	margin-top: 50px;
 	border-radius: 50%;
 	border: 5px solid;
@@ -122,10 +122,10 @@ textarea:focus{
 	border: 0;
 	border-bottom: 2px solid #FFED00;
 }
-button{
+/* button{
 	margin-left: auto;
 	margin-right: auto;
-}
+} */
 #p-but{
 	margin-top: 10px;
 	width:50%;
