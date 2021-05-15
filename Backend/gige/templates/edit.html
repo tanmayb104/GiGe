@@ -18,77 +18,73 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <form>
-        <div class = "nav-all">
-            <div class="brand">
-                <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
+        <form method="post" action="{% url 'itemEdit' item.id %}">
+            {% csrf_token %}
+            <div class = "nav-all">
+                <div class="brand">
+                    <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
+                </div>
+                <p>Edit Product</p>
+                <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
+                <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
+                <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
+                <a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
+                <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
             </div>
-            <p>Edit Product</p>
-            <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
-            <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
-            <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
-			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
-        </div>
-        <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
-        <div class="prod-det">
-            <div class="prod-img">
-                <img src="{% static '/images/cycle.jpg' %}">
-                <label for="p-img"><img id="img-s" src="{% static '/images/cycle.jpg' %}"></label>
-                <input type="file" onchange="update_img(event)" style="display: none;" id="p-img" name="p-img">
+            <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
+            <div class="prod-det">
+                <div class="prod-img">
+                    <label for="p-img"><img id="img-s" src="/media/{{ item.item_pic }}"></label>
+                    <input type="file" onchange="update_img(event)" style="display: none;" id="p-img" name="p-img">
+                </div>
+                <div class="det">
+                    <section id="additional-det">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th class="det-col-1">Name</th>
+                                    <th class="det-col-2"><input type="text" name="name" required value="{{item.name}}" id="e-name"></th>
+                                </tr>
+                                <tr>
+                                    <td class="det-space"></td>
+                                    <td class="det-space"></td>
+                                </tr>
+                                <tr>
+                                    <th class="det-col-1">Days</th>
+                                    <th class="det-col-2"><input type="number" name="days" required value="{{item.days}}" id="e-day"></th>
+                                </tr>
+                                <tr>
+                                    <td class="det-space"></td>
+                                    <td class="det-space"></td>
+                                </tr>
+                                <tr>
+                                    <th class="det-col-1">Price</th>
+                                    <th class="det-col-2"><input type="number" name="price" required value="{{item.price}}" id="e-proce"></th>
+                                </tr>
+                                <tr>
+                                    <td class="det-space"></td>
+                                    <td class="det-space"></td>
+                                </tr>
+                                <tr>
+                                    <th class="det-col-1">Status</th>
+                                    <th class="det-col-2"><input type="text" name="name" required value="{{item.status}}" id="e-sat"></th>
+                                </tr>
+                                <tr>
+                                    <td class="det-space"></td>
+                                    <td class="det-space"></td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </section>
+                    <section id="click">
+                        <input type="submit">
+                    </section>
+                </div>
             </div>
-            <div class="det">
-                <section id="additional-det">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th class="det-col-1">Name</th>
-                                <th class="det-col-2"><input type="text" required value="Zero 2 One Book" id="e-name"></th>
-                            </tr>
-                            <tr>
-                                <td class="det-space"></td>
-                                <td class="det-space"></td>
-                            </tr>
-                            <tr>
-                                <th class="det-col-1">Days</th>
-                                <th class="det-col-2"><input type="number" required value="3" id="e-day"></th>
-                            </tr>
-                            <tr>
-                                <td class="det-space"></td>
-                                <td class="det-space"></td>
-                            </tr>
-                            <tr>
-                                <th class="det-col-1">Price</th>
-                                <th class="det-col-2"><input type="number" required value="100" id="e-proce"></th>
-                            </tr>
-                            <tr>
-                                <td class="det-space"></td>
-                                <td class="det-space"></td>
-                            </tr>
-                            <tr>
-                                <th class="det-col-1">Status</th>
-                                <th class="det-col-2"><input type="text" required value="Active" id="e-sat"></th>
-                            </tr>
-                            <tr>
-                                <td class="det-space"></td>
-                                <td class="det-space"></td>
-                            </tr>
-                            <tr>
-                                <th class="det-col-1">Total Orders</th>
-                                <th class="det-col-2">7</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </section>
-                <section id="click">
-                    <input type="submit">
-                </section>
+            <div class="des-prod" >
+                <h2>Description</h2>
+                <textarea rows="5" cols="500" id="e-des" name="description">{{item.description}}</textarea>
             </div>
-        </div>
-        <div class="des-prod" >
-            <h2>Description</h2>
-            <textarea rows="5" cols="500" id="e-des">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet vivamus at lacus semper rhoncus amet, vitae luctus condimentum. Amet sed volutpat elit diam et.</textarea>
-        </div>
         </form>
         <script>
             const back = () =>{

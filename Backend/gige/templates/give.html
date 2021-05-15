@@ -29,14 +29,15 @@
                     <div class="cont-item-1">
                         <h2 id="task-head">To Do List</h2>
                         <div class="item">
-                            <form>
+                            <form method="post" action="{% url 'Todoadd' %}">
+                                {% csrf_token %}
                                 <i class="fas fa-plus-square"></i><input type="text" placeholder="Add New Task" name="new-task"><input style="float: right;" value="Add" type="submit">
                             </form>
                         </div>
                         {% for task in todolist %}
                             <div class="item">
                                 <section>
-                                <i class="fas fa-tasks"></i><p id="task-des">{{task.heading}}</p><a id="h-non" style="float: right;padding-top:4px;height: 20px;margin-right: 15px;" href = "#"><i class="far fa-check-square"></i></a>
+                                <i class="fas fa-tasks"></i><p id="task-des">{{task.heading}}</p><a id="h-non" style="float: right;padding-top:4px;height: 20px;margin-right: 15px;" href = "{% url 'Tododelete' task.id %}"><i class="far fa-check-square"></i></a>
                             </section>
                             </div>
                         {% endfor %}
@@ -55,7 +56,7 @@
                         <div id="p-hide">
                             <img id="sec-img" src="/media/{{ item.owner.profile.profile_pic }}" width="20px" height="20px" style="margin-right:3px">
                             {{item.name}}</div>
-                        <a href="#" id="p-a">See More</a>
+                        <a href="edit/{{item.id}}/" id="p-a">See More</a>
                     </div>
                 {% endfor %}
             </div>

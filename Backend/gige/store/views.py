@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from .models import Item, Todoitem
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # Create your views here.
 
@@ -73,17 +74,17 @@ def itemAdd(request):
         return render(request, 'itemAdd.html', data)
 
 
-@login_required
-def giveItem(request,pk):
+# @login_required
+# def giveItem(request,pk):
 
-    try:
-        user = User.objects.get(username=request.user.username)
-        item =  Item.objects.get(id=pk)
-        data = {"user": user, "items": item}
-        return render(request, 'giveItem.html', data)
-    except:
-        messages.error(request, 'Item does not exist')
-        return render(request, 'give.html')
+#     try:
+#         user = User.objects.get(username=request.user.username)
+#         item =  Item.objects.get(id=pk)
+#         data = {"user": user, "items": item}
+#         return render(request, 'giveItem.html', data)
+#     except:
+#         messages.error(request, 'Item does not exist')
+#         return render(request, 'give.html')
 
 
 @login_required
@@ -104,24 +105,29 @@ def itemEdit(request,pk):
     
     if (request.method == 'POST'):
         
-        try:
-            item = Item.objects.get(user=request.user.id, id=pk)
-            item.name = request.POST['name']
-            item.description = request.POST['description']
-            item.item_pic = request.POST['item_pic']
-            item.price = request.POST['price']
-            item.digital = request.POST['digital']
-            item.category = request.POST['category']
-            item.save()
-            messages.success(request, 'Item edited successfully')
-            return redirect('giveItem',pk=pk)
-        except:
-            messages.error(request, 'Item does not exist')
-            return redirect('give')
+        item = Item.objects.get(id=pk)
+        print(request.POST)
+        item.name = request.POST['name']
+        item.description = request.POST['description']
+        item.item_pic = request.POST['p-img']
+        item.price = request.POST['price']
+        # item.category = request.POST['category']
+        item.days = request.POST['days']
+        item.save()
+        messages.success(request, 'Item edited successfully')
+        return redirect('itemEdit',pk=pk)
     
     else:
 
-        return render(request, 'edit.html')
+        try:
+            user = User.objects.get(username=request.user.username)
+            item =  Item.objects.get(id=pk)
+            data = {"user": user, "item": item}
+            return render(request, 'edit.html', data)
+        except:
+            messages.error(request, 'Item does not exist')
+            return redirect('give')
+        
 
 
 @login_required
@@ -134,11 +140,12 @@ def itemBuy(request,pk):
 
 
 @login_required
-def itemTodoadd(request):
+def Todoadd(request):
 
+    print("hi")
     if (request.method == 'POST'):
-        heading = request.POST['heading']
-        user = request.user.id
+        heading = request.POST['new-task']
+        user = request.user
 
         item,created = Todoitem.objects.get_or_create(heading=heading, user=user)
         if(created):
@@ -149,11 +156,11 @@ def itemTodoadd(request):
             return redirect('give')
 
     else:
-        return render(request,'give.html')
+        return render(request,'get.html')
 
 
 @login_required
-def itemTododelete(request,pk):
+def Tododelete(request,pk):
 
     try:
         task = Todoitem.objects.get(id=pk)
@@ -163,4 +170,14 @@ def itemTododelete(request,pk):
     except:
         messages.error(request, 'Task does not exist')
         return redirect('give')
+
+
+@login_required
+def itemSearch(request,pk):
+
+    items = Item.objects.filter(Q(name__icontains=pk)|Q(description__icontains=pk)).distinct()
+    user = User.objects.get(username=request.user.username)
+    data = {"user": user, "items": items}
+    # return render(request, 'search.html', data)
+
 
