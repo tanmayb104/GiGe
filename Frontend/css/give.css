@@ -90,10 +90,14 @@ a:hover, a:active{
     font-weight: 550;
 }
 .item{
+    height: 50px;
     padding-left: 10px;
     border: 2px solid;
     border-radius: 10px;
     margin-bottom: 3px;
+}
+.item > section{
+    margin-top: 10px;
 }
 .cont-item-2{
     display: inline-block;

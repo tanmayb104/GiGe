@@ -270,3 +270,8 @@ button:hover{
     border-radius: 5px;
     margin-bottom: 10px;
 }
+#img-center{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
