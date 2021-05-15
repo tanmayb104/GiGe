@@ -31,7 +31,8 @@
         <nav class="head">
 			<div style="background-color: black;" id="logo"><img src="{% static '/images/Frame.png' %}" width="75px" height="75px"></div>
             <div id = "cat"><i class="fas fa-filter"></i>Categories</div>
-            <form class="search" action="" method="GET">
+            <form class="search" action="{% url 'itemSearch' %}" method="post">
+                {% csrf_token %}
                 <input type="text" name="search" placeholder="Find Goods and Services in your Campus">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>

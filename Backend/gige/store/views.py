@@ -109,7 +109,8 @@ def itemEdit(request,pk):
         print(request.POST)
         item.name = request.POST['name']
         item.description = request.POST['description']
-        item.item_pic = request.POST['p-img']
+        if(request.POST['p-img']):
+            item.item_pic = request.POST['p-img']
         item.price = request.POST['price']
         # item.category = request.POST['category']
         item.days = request.POST['days']
@@ -173,11 +174,13 @@ def Tododelete(request,pk):
 
 
 @login_required
-def itemSearch(request,pk):
+def itemSearch(request):
 
+    print("ASfasf")
+    pk="h"
     items = Item.objects.filter(Q(name__icontains=pk)|Q(description__icontains=pk)).distinct()
     user = User.objects.get(username=request.user.username)
     data = {"user": user, "items": items}
-    # return render(request, 'search.html', data)
+    return render(request, 'search.html', data)
 
 
