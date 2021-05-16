@@ -50,7 +50,7 @@
 						<input type="text" id="username" name="username" required placeholder="User Name">
 						<input type="password" id="password" name="password" required placeholder="Password">
 						<input type="submit">
-						<div style="color: red;">
+						<div id="mess">
 							{% if messages %}
 								<ul class="messages">
 									{% for message in messages %}
@@ -73,6 +73,10 @@
 				return false
 			}
 		}
+		document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
 	</script>
 </body>
 </html>

@@ -82,13 +82,15 @@
                             <button type="submit">Submit</button>
                             <div style="color: red;">
                                 <p style="font-size: 15px;" id="f-val"></p>
-                            {% if messages %}
-								<ul class="messages">
-									{% for message in messages %}
-										<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-									{% endfor %}
-								</ul>
-							{% endif %}
+                                <div id="mess">
+                                    {% if messages %}
+                                        <ul class="messages">
+                                            {% for message in messages %}
+                                                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -147,7 +149,10 @@
                 }
                 return true;
             };
-
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>

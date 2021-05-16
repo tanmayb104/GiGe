@@ -170,7 +170,7 @@ def Tododelete(request,pk):
     try:
         task = Todoitem.objects.get(id=pk)
         task.delete()
-        messages.error(request, 'Task completed')
+        messages.success(request, 'Task completed')
         return redirect('give')
     except:
         messages.error(request, 'Task does not exist')

@@ -104,6 +104,15 @@
 				<img src="{% static '/images/Vector (3).png' %}">
 		</div>
 	</div>
+    <div id="mess">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
         <script>
             var sources = ["{% static '/images/getcycle.jpg' %}","{% static '/images/vit.jpeg' %}","{% static '/images/getcomp.jpg' %}"];
             var i = 1;
@@ -111,6 +120,10 @@
                 document.getElementById("up_img").src = sources[i%3];
                 i = i+1;
             },5000);
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>

@@ -28,11 +28,19 @@
 			<a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
             <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
         </div>
-        <div id="mess">Login Success!</div>
+        <div id="mess">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <div id="page-des"><h2>Product</h2></div>
         <div class="prod-det">
             <div class="prod-img">
-                <img src="/media/{{ item.item_pic }}">
+                <img style="object-fit: contain;border: 0px solid;" src="/media/{{ item.item_pic }}">
             </div>
             <div class="det">
                 <h2>{{item.name}}</h2>
