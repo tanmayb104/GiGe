@@ -35,7 +35,7 @@
             <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
             <div class="prod-det">
                 <div class="prod-img">
-                    <label for="p-img"><img id="img-s" src="/media/{{ item.item_pic }}"></label>
+                    <label for="p-img"><img id="img-s" style="object-fit: contain;border: 0px solid;" src="/media/{{ item.item_pic }}"></label>
                     <input type="file" onchange="update_img(event)" style="display: none;" id="p-img" name="p-img">
                 </div>
                 <div class="det">

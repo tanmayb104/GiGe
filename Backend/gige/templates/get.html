@@ -48,7 +48,7 @@
         </div>
         <div class="user-slide">
             <div id="1">
-                <img id="up_img" style="width: 100%;" height="300px" src="{% static '/images/Frame.png' %}">
+                <img id="up_img" style="width: 100%;object-fit: contain;" height="300px" src="{% static '/images/getcycle.jpg' %}">
             </div>
         </div>
         {% for category,item_set in items.items %}
@@ -105,10 +105,10 @@
 		</div>
 	</div>
         <script>
-            var sources = ["{% static '/images/features 2.png' %}","{% static '/images/Frame.png' %}"];
-            var i = 0;
+            var sources = ["{% static '/images/getcycle.jpg' %}","{% static '/images/vit.jpeg' %}","{% static '/images/getcomp.jpg' %}"];
+            var i = 1;
             setInterval(function(){
-                document.getElementById("up_img").src = sources[i%2];
+                document.getElementById("up_img").src = sources[i%3];
                 i = i+1;
             },5000);
         </script>
