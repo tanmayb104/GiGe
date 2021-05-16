@@ -1,5 +1,5 @@
 
-#mess{
+.success{
     position: absolute;
     text-align: center;
     top: 0;
@@ -12,4 +12,18 @@
     font-size: 30px;
     /* background-color: chartreuse; */
     color: green;
+}
+.error{
+    position: absolute;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    font-size: 30px;
+    /* background-color: chartreuse; */
+    color:red;
 }

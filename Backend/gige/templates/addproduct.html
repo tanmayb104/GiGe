@@ -66,6 +66,15 @@
                     <span>
                         <input type="submit">
                     </span>
+                    <div id="mess">
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
                 </div>
             </form>
         </div>
@@ -79,6 +88,10 @@
                 disp.src = URL.createObjectURL(out);
                 document.getElementById("img-bef").style.display = "none";
             };
+        document.getElementById("mess").style.display = "block";
+        setTimeout(function(){
+            document.getElementById("mess").style.display = "none";
+        },3000);
     </script>
     </body>
 </html>

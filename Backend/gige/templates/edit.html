@@ -32,7 +32,7 @@
                 <a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
                 <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
             </div>
-            <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Edit</h2></div>
+            <div id="page-des"><h2>Edit</h2></div>
             <div class="prod-det">
                 <div class="prod-img">
                     <label for="p-img"><img id="img-s" src="/media/{{ item.item_pic }}"></label>
@@ -87,6 +87,15 @@
                 <textarea rows="5" cols="500" id="e-des" name="description">{{item.description}}</textarea>
             </div>
         </form>
+        <div id="mess">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <script>
             const back = () =>{
                 window.history.back();
@@ -96,6 +105,10 @@
                 var out = event.target.files[0];
                 d_img.src = URL.createObjectURL(out);
             }
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>
