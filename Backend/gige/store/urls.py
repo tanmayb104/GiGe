@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path('get/', views.get, name="get"),
     path('get/item/<str:pk>/', views.itemView, name="itemView"),
-    path('get/<str:pk>/', views.categoryView, name="categoryView"),
+    path('get/category/<str:pk>/', views.categoryView, name="categoryView"),
     path('get/item/<str:pk>/buy/', views.itemBuy, name="itemBuy"),
     path('get/search/', views.itemSearch, name="itemSearch"),
     path('give/', views.give, name="give"),

@@ -55,12 +55,16 @@ def itemAdd(request):
         name = request.POST['pname']
         description = request.POST['pdes']
         item_pic = request.POST['pimg']
-        owner = request.user.id
+        item_pic = item_pic.replace(" ","_")
+        item_pic = item_pic.replace("(","")
+        item_pic = item_pic.replace(")","")
+        print(item_pic)
+        item_pic = "item_pic/"+ item_pic
         price = request.POST['pcost']
         digital = request.POST['pdig']
         category = request.POST['pcat']
-
-        item,created = Item.objects.get_or_create(name=name, description=description, item_pic=item_pic, owner=owner, price=price, digital=digital, status=False, category=category)
+        days = request.POST['pday']
+        item,created = Item.objects.get_or_create(name=name, description=description, item_pic=item_pic, owner=request.user, price=price, digital=digital, status=False, category=category, days=days)
         if(created):
             messages.success(request, 'Item listed successfully')
             return redirect('give')
@@ -176,11 +180,11 @@ def Tododelete(request,pk):
 @login_required
 def itemSearch(request):
 
-    print("ASfasf")
-    pk="h"
-    items = Item.objects.filter(Q(name__icontains=pk)|Q(description__icontains=pk)).distinct()
+    pk = request.GET['search']
+    items = Item.objects.filter(Q(name__icontains=pk)|Q(description__icontains=pk)).distinct().exclude(owner=request.user.id)
+    print(items)
     user = User.objects.get(username=request.user.username)
     data = {"user": user, "items": items}
-    return render(request, 'search.html', data)
+    return render(request, 'searchItem.html', data)
 
 

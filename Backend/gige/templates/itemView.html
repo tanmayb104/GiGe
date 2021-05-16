@@ -26,7 +26,7 @@
             <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
             <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
 			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
+            <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div id="mess" onload="dismes()">Login Success!</div>
         <div id="page-des"><i class="fas fa-arrow-circle-left"></i><h2>Product</h2></div>
@@ -78,6 +78,9 @@
                 setTimeout(function(){
                     document.getElementById("mess").style.display = "none";
                 },3000);
+            const back = () =>{
+                window.history.back();
+            };
         </script>
     </body>
 </html>

@@ -39,6 +39,10 @@ def register(request):
         email = request.POST['email']
         phone_number = request.POST['phone_number']
         profile_pic = request.POST['profile_pic']
+        profile_pic = profile_pic.replace(" ","_")
+        profile_pic = profile_pic.replace("(","")
+        profile_pic = profile_pic.replace(")","")
+        profile_pic = "profile_pic/"+ profile_pic
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):

@@ -27,7 +27,7 @@
 			<a class="about" href="{% url 'give' %}">Switch To Give</a>
             <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
 			<a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-out-alt"></i></a>
+            <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>
 		</nav>
         <div class = "cat-cont">
             <h2>{{category}}</h2>

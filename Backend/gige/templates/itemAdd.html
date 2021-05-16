@@ -20,8 +20,8 @@
         <div class="cont-main">
             <div class="user-nav">
                 <p id="txt">Add New Product</p>
-                <a class="rem" href="#">Go Back</a>
-                <a class="rem" href="#"><i class="fa fa-user"></i></a>
+                <a class="rem" href="">Go Back</a>
+                <a class="rem" href="{% url 'profile' %}"><i class="fa fa-user"></i></a>
             </div>
             <div id="logo">
                 <img src="{% static '/images/Frame.png' %}"height="100px" width="100px" >
@@ -81,6 +81,11 @@
                 disp.src = URL.createObjectURL(out);
                 document.getElementById("img-bef").style.display = "none";
             };
+    </script>
+    <script>
+        const back = () =>{
+            window.history.back();
+        };
     </script>
     </body>
 </html>
