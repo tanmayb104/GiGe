@@ -5,6 +5,7 @@
     <head>
         <title>GiGe</title>
         <link rel="stylesheet" href="{% static '/css/view.css' %}">
+        <link rel="stylesheet" href="{% static '/css/messages.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
         <link rel="stylesheet" href="{% static '/css/product.css' %}">
         <link rel="stylesheet" href="{% static '/css/edit.css' %}">
@@ -72,6 +73,10 @@
             <p>{{item.description}}</p>
         </div>
         <script>
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
             const back = () =>{
                 window.history.back();
             };
