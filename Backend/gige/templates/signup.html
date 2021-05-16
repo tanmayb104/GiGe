@@ -9,8 +9,20 @@
 	    <link rel="stylesheet" href="{% static '/css/signup.css' %}">
         <link rel="stylesheet" href="{% static '/css/homebasic.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
+        <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            #img-af{
+                border-radius: 50%;
+                border: 2px solid black;
+                margin-bottom: 10px;
+            }
+            #lab-bef{
+                color: black;
+                margin-top: 15px;
+                font-size: 15px;
+                margin-top: 5px;
+            }
             .head{
                 background-color: black;
                 color:#FFDF00;
@@ -42,7 +54,7 @@
                     <p style="font-size: 40px;">On your Campus</p>
                 </div>
                 <div class="child">
-                    <form action="{% url 'register' %}" method="post">
+                    <form id="val-for" onsubmit = "return formchk()" action="{% url 'register' %}" method="post">
                         {% csrf_token %}
 
                         <div class="aligner">
@@ -52,10 +64,13 @@
                             <input type="password" id="pass1" name="password1" required placeholder="Password">
                             <input type="password" id="pass2" name="password2" required placeholder="Confirm Password">
                             <input type="email" id="email" name="email" required placeholder="Email address">
-                            <input type="tel" id="pno" name="phone_number" required placeholder="Phone Number">
-                            <input type="file" id="avatar" name="profile_pic"accept="image/png, image/jpeg">
-                            <input type="submit">
+                            <input type="num" id="pno" name="phone_number" required placeholder="Phone Number">
+                            <label id="lab-bef" style="color: black;" for="avatar"><i class="fas fa-images"></i>Add Image</label>
+                            <input required type="file" id="avatar" style="display: none;" onchange="dispimg(event)" name="profile_pic"accept="image/png, image/jpeg">
+                            <img src="" id="img-af" width="50px" height="50px" style="display: none;">
+                            <button type="submit">Submit</button>
                             <div style="color: red;">
+                                <p style="font-size: 15px;" id="f-val"></p>
                             {% if messages %}
 								<ul class="messages">
 									{% for message in messages %}
@@ -69,5 +84,59 @@
                 </div>
             </div>
         </div>
+        <script>
+            var dispimg = function (event)
+            {
+                var disp = document.getElementById("img-af");
+                var out = event.target.files[0];
+                disp.style.display = "block";
+                disp.src = URL.createObjectURL(out);
+            };
+            function formchk(){
+                var u_name = document.getElementById("username").value;
+                var f = document.getElementById("fname").value;
+                var l = document.getElementById("lname").value;
+                var pn = document.getElementById("pno").value;
+                var p1 = document.getElementById("pass1").value;
+                var p2 = document.getElementById("pass2").value;
+                let err = document.getElementById("f-val");
+                console.log(p1);
+                console.log(p2);
+                if(p1!==p2){
+                    err.innerHTML = "Passwords Must Match";
+                    return false;
+                }
+                if(pn.length != 10){
+                    err.innerHTML = "Phone Number Must be 10 Digits";
+                    return false;
+                }
+                if((!(/[a-zA-Z]/.test(u_name))))
+                {
+                    err.innerHTML = "Username Format Incorrect";
+                    return false;
+                }
+                if((!(/[0-9]/.test(u_name))))
+                {
+                    err.innerHTML = "Username Format Incorrect";
+                    return false;
+                }
+                if((!(/^[a-zA-Z]+$/.test(f))) || (f.length==0))
+                {
+                    err.innerHTML = "First Name Format Incorrect";
+                    return false;
+                }
+                if((!(/^[a-zA-Z]+$/.test(l))) || (l.length==0))
+                {
+                    err.innerHTML = "Last Name Format Incorrect";
+                    return false;
+                }
+                if((!(/[a-zA-Z0-9]/.test(pass1))) || (pass1.length <=8)){
+                    err.innerHTML = "Password Format Incorrect";
+                    return false;
+                }
+                return true;
+            };
+
+        </script>
     </body>
 </html>
