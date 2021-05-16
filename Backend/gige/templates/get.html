@@ -31,21 +31,19 @@
         <nav class="head">
 			<div style="background-color: black;" id="logo"><img src="{% static '/images/Frame.png' %}" width="75px" height="75px"></div>
             <div id = "cat"><i class="fas fa-filter"></i>Categories</div>
-            <form class="search" action="{% url 'itemSearch' %}" method="post">
-                {% csrf_token %}
+            <form class="search" action="{% url 'itemSearch' %}" method="get">
                 <input type="text" name="search" placeholder="Find Goods and Services in your Campus">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
 			<a class="about" href="{% url 'give' %}">Switch To Give</a>
             <a class="sign" href=""><i class="fas fa-wallet"></i></a>
 			<a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
+            <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
 		</nav>
         <div class="s-new">
-            <a href="#" class="about cat-sel">Electronics</a>
-            <a href="#" class="about cat-sel">Sports</a>
-            <a href="#" class="about cat-sel">Academics</a>
-            <a href="#" class="about cat-sel">Daily Needs</a>
+            <a href="{% url 'categoryView' 'Electronic' %}" class="about cat-sel">Electronics</a>
+            <a href="{% url 'categoryView' 'Books' %}" class="about cat-sel">Books</a>
+            <a href="{% url 'categoryView' 'General' %}" class="about cat-sel">General</a>
         </div>
         <div class="user-slide">
             <div id="1">
@@ -56,7 +54,7 @@
             <div class = "items-disp">
                 <div class="cat-disp">
                     <p>{{ category }}</p>
-                    <a href="/store/get/{{category}}" style="color: white;" id="righter">See More</a>
+                    <a href="{% url 'categoryView' category %}" style="color: white;" id="righter">See More</a>
                 </div>
                 <div class="item-box">
                     {% for item in item_set %}
@@ -72,7 +70,7 @@
                                     <td>{{item.days}} Days</td>
                                 </tr>
                             </table>
-                            <a href="item/{{item.id}}" id="p-a">GET</a>
+                            <a href="{% url 'itemView' item.id %}" id="p-a">GET</a>
                         </div>
                     {% endfor %}
                 </div>
