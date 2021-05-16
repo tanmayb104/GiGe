@@ -112,26 +112,26 @@
                 }
                 if((!(/[a-zA-Z]/.test(u_name))))
                 {
-                    err.innerHTML = "Username Format Incorrect";
+                    err.innerHTML = "Username does not contain alphabets";
                     return false;
                 }
                 if((!(/[0-9]/.test(u_name))))
                 {
-                    err.innerHTML = "Username Format Incorrect";
+                    err.innerHTML = "Username does not contain numbers";
                     return false;
                 }
                 if((!(/^[a-zA-Z]+$/.test(f))) || (f.length==0))
                 {
-                    err.innerHTML = "First Name Format Incorrect";
+                    err.innerHTML = "First Name should only contain alphabets";
                     return false;
                 }
                 if((!(/^[a-zA-Z]+$/.test(l))) || (l.length==0))
                 {
-                    err.innerHTML = "Last Name Format Incorrect";
+                    err.innerHTML = "Last Name should only contain alphabets";
                     return false;
                 }
-                if((!(/[a-zA-Z0-9]/.test(pass1))) || (pass1.length <=8)){
-                    err.innerHTML = "Password Format Incorrect";
+                if((!(/[a-zA-Z0-9]/.test(p1))) || (p1.length <=8)){
+                    err.innerHTML = "Password length must be grater than 8";
                     return false;
                 }
                 return true;

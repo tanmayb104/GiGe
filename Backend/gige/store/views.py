@@ -15,7 +15,7 @@ def get(request):
     categories = ["General","Electronic","Books"]
     categoryItems = {}
     for i in categories:
-        categoryItems[i] = items.filter(category=i).reverse()
+        categoryItems[i] = items.filter(category=i).reverse()[:3]
     data = {"user": user, "items": categoryItems}
     return render(request, 'get.html', data)
 
