@@ -6,8 +6,10 @@
         <title>Sign Up</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
 	    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static '/css/messages.css' %}">
 	    <link rel="stylesheet" href="{% static '/css/signup.css' %}">
         <link rel="stylesheet" href="{% static '/css/homebasic.css' %}">
+        <link rel="stylesheet" href="{% static '/css/messages.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -130,7 +132,7 @@
                     err.innerHTML = "Last Name Format Incorrect";
                     return false;
                 }
-                if((!(/[a-zA-Z0-9]/.test(pass1))) || (pass1.length <=8)){
+                if((!(/[a-zA-Z0-9]/.test(p1))) || (p1.length <=8)){
                     err.innerHTML = "Password Format Incorrect";
                     return false;
                 }
