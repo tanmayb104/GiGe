@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
-from .models import Item, Todoitem
+from .models import Item, Todoitem, Transaction
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
@@ -58,7 +58,6 @@ def itemAdd(request):
         item_pic = item_pic.replace(" ","_")
         item_pic = item_pic.replace("(","")
         item_pic = item_pic.replace(")","")
-        print(item_pic)
         item_pic = "item_pic/"+ item_pic
         price = request.POST['pcost']
         digital = request.POST['pdig']
@@ -139,15 +138,15 @@ def itemEdit(request,pk):
 def itemBuy(request,pk):
 
     user = User.objects.get(username=request.user.username)
-    trans = Transaction.object.create(item=pk,customer=request.user.id)
+    item = Item.objects.get(id=pk)
+    trans = Transaction.objects.create(item=item,customer=request.user)
     trans.save()
-    return render(request,'get.html')
+    return redirect('getOrders')
 
 
 @login_required
 def Todoadd(request):
 
-    print("hi")
     if (request.method == 'POST'):
         heading = request.POST['new-task']
         user = request.user
@@ -188,3 +187,19 @@ def itemSearch(request):
     return render(request, 'searchItem.html', data)
 
 
+@login_required
+def getOrders(request):
+
+    user = User.objects.get(username=request.user.username)
+    orders = Transaction.objects.filter(customer=user)
+    data = {"user": user, "orders": orders}
+    return render(request,'orders_getter.html',data)
+
+
+@login_required
+def giveOrders(request):
+
+    user = User.objects.get(username=request.user.username)
+    orders = Transaction.objects.filter(item__owner=user)
+    data = {"user": user, "orders": orders}
+    return render(request,'orders_giver.html',data)

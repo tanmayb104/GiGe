@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GiGe</title>
+        <link rel="stylesheet" href="{% static '/css/view.css' %}">
+        <link rel="stylesheet" href="{% static '/css/active.css' %}">
+        <link rel="stylesheet" href="{% static '/css/home.css' %}">
+        <link rel="stylesheet" href="{% static '/css/product.css' %}">
+        <link rel="stylesheet" href="{% static '/css/order.css' %}">
+        <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" href="{% static '/images/Frame.png' %}" type="image">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class = "nav-all">
+            <div class="brand">
+                <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
+            </div>
+            <p style="font-size: 50px; margin-left: 10px;">Orders</p>
+            <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
+            <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
+            <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
+			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
+            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
+        </div>
+        <div class="ac-cont">
+            <div class="ac-head">
+                <i class="fas fa-arrow-circle-left"></i>
+                <p>Orders</p>
+            </div>
+            <div class="ac-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="col-1"></th>
+                            <th class="col-2">Title</th>
+                            <th class="col-3">Price</th>
+                            <th class="col-4">Days</th>
+                            <th class="col-5"></th>
+                            <th class="col-6"></th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="t-try">
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        {% for order in orders %}
+                            <tr class="it-row">
+                                <td class="col-1"><img src="/media/{{ order.item.item_pic }}" width="50px" height="50px"></td>
+                                <td class="col-2">{{order.item.name}}</td>
+                                <td class="col-3">{{order.item.price}}</td>
+                                <td class="col-4">{{order.item.days}}</td>
+                                <td class="col-5">15</td>
+                                <td class="col-6"></td>
+                            </tr>
+                            <tr id="t-try">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            const back = () =>{
+                window.history.back();
+            };
+            const update_img = (event) =>{
+                var d_img = document.getElementById("img-s");
+                var out = event.target.files[0];
+                d_img.src = URL.createObjectURL(out);
+    
+            }
+        </script>
+    </body>
+</html>

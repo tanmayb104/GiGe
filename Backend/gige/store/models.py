@@ -42,7 +42,7 @@ class Transaction(models.Model):
 
 
     def __str__(self):
-        return self.transaction_id
+        return str(self.transaction_id)
 
 
 class Todoitem(models.Model):
