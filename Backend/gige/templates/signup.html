@@ -69,13 +69,23 @@
                         {% csrf_token %}
 
                         <div class="aligner">
-                            <input type="text" id="fname" name="first_name" required placeholder="First Name">
-                            <input type="text" id="lname" name="last_name" required placeholder="Last Name">
-                            <input type="text" id="username" name="username" required placeholder="User Name">
-                            <input type="password" id="pass1" name="password1" required placeholder="Password">
-                            <input type="password" id="pass2" name="password2" required placeholder="Confirm Password">
+                            <div>
+                            <input style="width:45%" type="text" id="fname" name="first_name" required placeholder="First Name">
+                            <input style="width:45%" type="text" id="lname" name="last_name" required placeholder="Last Name">
+                            </div>
+                            <div>
+                            <input style="width:45%" type="text" id="username" name="username" required placeholder="User Name">
+                            <input style="width:45%" type="num" id="pno" name="phone_number" required placeholder="Phone Number">
+                            </div>
+                            <div>
+                            <input style="width:45%" type="password" id="pass1" name="password1" required placeholder="Password">
+                            <input style="width:45%" type="password" id="pass2" name="password2" required placeholder="Confirm Password">
+                            </div>
+                            <div>
+                            <input style="width:45%" type="text" id="loc" name="loc" required placeholder="Location">
+                            <input style="width:45%" type="date" id="dob" name="dob" required>
+                            </div>
                             <input type="email" id="email" name="email" required placeholder="Email address">
-                            <input type="num" id="pno" name="phone_number" required placeholder="Phone Number">
                             <label id="lab-bef" style="color: black;" for="avatar"><i class="fas fa-images"></i>Add Image</label>
                             <input required type="file" id="avatar" style="display: none;" onchange="dispimg(event)" name="profile_pic"accept="image/png, image/jpeg">
                             <img src="" id="img-af" width="50px" height="50px" style="display: none;">
