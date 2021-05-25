@@ -42,7 +42,7 @@ class Transaction(models.Model):
 
 
     def __str__(self):
-        return str(self.transaction_id)
+        return f"{self.item}-{self.customer}"
 
 
 class Todoitem(models.Model):

@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{% static '/css/view.css' %}">
         <link rel="stylesheet" href="{% static '/css/active.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
+        <link rel="stylesheet" href="{% static '/css/messages.css' %}">
         <link rel="stylesheet" href="{% static '/css/product.css' %}">
         <link rel="stylesheet" href="{% static '/css/order.css' %}">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
@@ -40,8 +41,8 @@
                             <th class="col-2">Title</th>
                             <th class="col-3">Price</th>
                             <th class="col-4">Days</th>
-                            <th class="col-5"></th>
-                            <th class="col-6"></th>
+                            <th class="col-5">Owner Name</th>
+                            <th class="col-6">Owner Number</th>
                             
                         </tr>
                     </thead>
@@ -59,8 +60,8 @@
                                 <td class="col-2">{{order.item.name}}</td>
                                 <td class="col-3">{{order.item.price}}</td>
                                 <td class="col-4">{{order.item.days}}</td>
-                                <td class="col-5" ></td>
-                                <td class="col-6"></td>
+                                <td class="col-5" >{{order.item.owner.first_name}} {{order.item.owner.last_name}}</td>
+                                <td class="col-6">{{order.item.owner.profile.phone_number}}</td>
                             </tr>
                             <tr id="t-try">
                                 <td></td>
@@ -73,6 +74,15 @@
                     </tbody>
                 </table>
             </div>
+            <div id="mess">
+							{% if messages %}
+								<ul class="messages">
+									{% for message in messages %}
+										<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+									{% endfor %}
+								</ul>
+							{% endif %}
+						</div>
             <div style="margin-left: auto; margin-right: auto;" id="container"></div>
 
 <script>
@@ -318,6 +328,10 @@ function processPayment(paymentData) {
                 var out = event.target.files[0];
                 d_img.src = URL.createObjectURL(out);
             };
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>

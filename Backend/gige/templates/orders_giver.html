@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{% static '/css/view.css' %}">
         <link rel="stylesheet" href="{% static '/css/active.css' %}">
         <link rel="stylesheet" href="{% static '/css/home.css' %}">
+        <link rel="stylesheet" href="{% static '/css/messages.css' %}">
         <link rel="stylesheet" href="{% static '/css/product.css' %}">
         <link rel="stylesheet" href="{% static '/css/order.css' %}">
         <script src="https://kit.fontawesome.com/bc6f27e589.js" crossorigin="anonymous"></script>
@@ -30,7 +31,6 @@
         </div>
         <div class="ac-cont">
             <div class="ac-head">
-                <i class="fas fa-arrow-circle-left"></i>
                 <p>Orders</p>
             </div>
             <div class="ac-table">
@@ -41,9 +41,8 @@
                             <th class="col-2">Title</th>
                             <th class="col-3">Price</th>
                             <th class="col-4">Days</th>
-                            <th class="col-5"></th>
-                            <th class="col-6"></th>
-                            
+                            <th class="col-5">Customer Name</th>
+                            <th class="col-6">Customer Number</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,8 +59,8 @@
                                 <td class="col-2">{{order.item.name}}</td>
                                 <td class="col-3">{{order.item.price}}</td>
                                 <td class="col-4">{{order.item.days}}</td>
-                                <td class="col-5">15</td>
-                                <td class="col-6"></td>
+                                <td class="col-5">{{order.customer.first_name}} {{order.customer.last_name}}</td>
+                                <td class="col-6">{{order.customer.profile.phone_number}}</td>
                             </tr>
                             <tr id="t-try">
                                 <td></td>
@@ -75,6 +74,15 @@
                 </table>
             </div>
         </div>
+        <div id="mess">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <script>
             const back = () =>{
                 window.history.back();
@@ -85,6 +93,10 @@
                 d_img.src = URL.createObjectURL(out);
     
             }
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>

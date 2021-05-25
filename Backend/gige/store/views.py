@@ -139,9 +139,13 @@ def itemBuy(request,pk):
 
     user = User.objects.get(username=request.user.username)
     item = Item.objects.get(id=pk)
-    trans = Transaction.objects.create(item=item,customer=request.user)
-    trans.save()
-    return redirect('getOrders')
+    trans,created = Transaction.objects.get_or_create(item=item,customer=request.user)
+    if(created):
+        messages.success(request, 'Order placed successfully')
+        return redirect('getOrders')
+    else:
+        messages.error(request, 'Order already placed')
+        return redirect('getOrders')
 
 
 @login_required
@@ -193,6 +197,8 @@ def getOrders(request):
     user = User.objects.get(username=request.user.username)
     orders = Transaction.objects.filter(customer=user)
     data = {"user": user, "orders": orders}
+    print(orders[0])
+    print(orders[0].item.owner.first_name)
     return render(request,'orders_getter.html',data)
 
 
