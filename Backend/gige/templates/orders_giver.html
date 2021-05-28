@@ -60,6 +60,7 @@
                                 <td class="col-4">{{order.item.days}}</td>
                                 <td class="col-5">{{order.customer.first_name}} {{order.customer.last_name}}</td>
                                 <td class="col-6">{{order.customer.profile.phone_number}}</td>
+                                <td class="col-4"><a href="{% url 'DeleteGiveOrders' order.transaction_id %}"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             <tr id="t-try">
                                 <td></td>

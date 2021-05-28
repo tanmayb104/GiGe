@@ -212,7 +212,7 @@ def giveOrders(request):
 
 
 @login_required
-def DeleteOrders(request,pk):
+def DeleteGetOrders(request,pk):
 
     try:
         transaction = Transaction.objects.get(transaction_id=pk)
@@ -222,3 +222,16 @@ def DeleteOrders(request,pk):
     except:
         messages.error(request, 'Order does not exists')
         return redirect('getOrders')
+
+
+@login_required
+def DeleteGiveOrders(request,pk):
+
+    try:
+        transaction = Transaction.objects.get(transaction_id=pk)
+        transaction.delete()
+        messages.success(request, 'Order deleted')
+        return redirect('giveOrders')
+    except:
+        messages.error(request, 'Order does not exists')
+        return redirect('giveOrders')

@@ -9,7 +9,7 @@ urlpatterns = [
     path('get/item/<str:pk>/buy/', views.itemBuy, name="itemBuy"),
     path('get/search/', views.itemSearch, name="itemSearch"),
     path('get/orders/', views.getOrders, name="getOrders"),
-    path('get/orders/<str:pk>', views.DeleteOrders, name="DeleteOrders"),
+    path('get/orders/<str:pk>', views.DeleteGetOrders, name="DeleteGetOrders"),
     path('give/', views.give, name="give"),
     path('give/add/', views.itemAdd, name="itemAdd"),
     path('give/edit/<str:pk>/', views.itemEdit, name="itemEdit"),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('give/todoadd/', views.Todoadd, name="Todoadd"),
     path('give/tododelete/<str:pk>', views.Tododelete, name="Tododelete"),
     path('give/orders/', views.giveOrders, name="giveOrders"),
+    path('give/orders/<str:pk>', views.DeleteGiveOrders, name="DeleteGiveOrders"),
 ]
