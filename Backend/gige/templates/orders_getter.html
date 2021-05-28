@@ -43,6 +43,7 @@
                             <th class="col-4">Days</th>
                             <th class="col-5">Owner Name</th>
                             <th class="col-6">Owner Number</th>
+                            <th class="col-4">Delete</th>
                             
                         </tr>
                     </thead>
@@ -62,6 +63,7 @@
                                 <td class="col-4">{{order.item.days}}</td>
                                 <td class="col-5" >{{order.item.owner.first_name}} {{order.item.owner.last_name}}</td>
                                 <td class="col-6">{{order.item.owner.profile.phone_number}}</td>
+                                <td class="col-4"><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             <tr id="t-try">
                                 <td></td>
@@ -328,10 +330,6 @@ function processPayment(paymentData) {
                 var out = event.target.files[0];
                 d_img.src = URL.createObjectURL(out);
             };
-            document.getElementById("mess").style.display = "block";
-                setTimeout(function(){
-                    document.getElementById("mess").style.display = "none";
-                },3000);
         </script>
     </body>
 </html>
