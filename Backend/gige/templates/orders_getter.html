@@ -24,10 +24,9 @@
             </div>
             <p style="font-size: 50px; margin-left: 10px;">Orders</p>
             <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
-            <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
-            <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
-			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
-            <a class="sign" href="#dropdown?"><i class="fas fa-sign-in-alt"></i></a>
+            <a href="{% url 'get' %}"><i class="fas fa-home"></i>HOME</a>
+			<a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
+            <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div class="ac-cont">
             <div class="ac-head">
@@ -63,7 +62,7 @@
                                 <td class="col-4">{{order.item.days}}</td>
                                 <td class="col-5" >{{order.item.owner.first_name}} {{order.item.owner.last_name}}</td>
                                 <td class="col-6">{{order.item.owner.profile.phone_number}}</td>
-                                <td class="col-4"><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                                <td class="col-4"><a href="{% url 'DeleteOrders' order.transaction_id %}"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             <tr id="t-try">
                                 <td></td>
@@ -330,6 +329,10 @@ function processPayment(paymentData) {
                 var out = event.target.files[0];
                 d_img.src = URL.createObjectURL(out);
             };
+            document.getElementById("mess").style.display = "block";
+                setTimeout(function(){
+                    document.getElementById("mess").style.display = "none";
+                },3000);
         </script>
     </body>
 </html>

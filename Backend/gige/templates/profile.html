@@ -23,20 +23,20 @@
                 <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
             </div>
             <p>Your Profile</p>
-            <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
-			<a class="sign" href="login.html"><i class="fa fa-user-circle"></i></a>
+            <a style="margin-left: auto;font-size: 15px;" href="{% url 'get' %}"><i class="fas fa-home"></i>HOME</a>
             <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div id="page-des"><h2>Profile</h2></div>
-        <form>
-        <div class="prof-det">
+        <form method="post" action="{% url 'profile' %}">
+            {% csrf_token %}
+            <div class="prof-det">
             <div class="user-img">
                 <label for="p-img"><img id="img-s" src="/media/{{ user.profile.profile_pic }}"></label>
                 <input type="file" onchange="update_img(event)" style="display: none;" id="p-img" name="p-img">
             </div>
             <div class="user-det">
-                <form method="post" action="{% url 'profile' %}">
-                    {% csrf_token %}
+                <form>
+
                     <table>
                         <tr></tr>
                         <tr>
@@ -53,12 +53,13 @@
                         </tr>
                         <tr>
                             <th class="det-col-1">Address</th>
-                            <td><textarea rows="3" cols="80" id="u-add">{{user.profile.location}}</textarea></td>
+                            <td><textarea rows="3" cols="80" id="u-add" name="loc">{{user.profile.location}}</textarea></td>
                         </tr>
                     </table>
                     <div id="p-but" style="align-content:flex-end;">
                         <input type="submit">
                     </div>
+                </form>
             </div>
         </div>
         <div id="mess">

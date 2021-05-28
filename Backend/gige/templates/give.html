@@ -58,7 +58,7 @@
                         <div id="p-hide">
                             <img id="sec-img" src="/media/{{ item.owner.profile.profile_pic }}" width="20px" height="20px" style="margin-right:3px">
                             {{item.name}}</div>
-                        <a href="edit/{{item.id}}/" id="p-a">See More</a>
+                        <a href="{% url 'itemEdit' item.id %}" id="p-a">See More</a>
                     </div>
                 {% endfor %}
             </div>

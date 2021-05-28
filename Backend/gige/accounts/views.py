@@ -84,10 +84,11 @@ def profile(request):
 
     if (request.method == 'POST'):
 
+        print(request.POST)
         username = request.POST['username']
         email = request.POST['email']
         phone_number = request.POST['phone_number']
-        profile_pic = request.POST['profile_pic']
+        profile_pic = request.POST['p-img']
         location = request.POST['loc']
 
         if(User.objects.filter(username=username).exists() and username!=request.user.username):
@@ -96,15 +97,18 @@ def profile(request):
         elif(User.objects.filter(email=email).exists() and email!=request.user.email):
             messages.error(request, 'Email Taken')
             return redirect('profile')
-        elif(User.objects.filter(phone_number=phone_number).exists()):
-            messages.error(request, 'Phone Number Taken')
-            return redirect('profile')
         else:
+            
             user = User.objects.get(username = request.user.username)
             user.username = username
             user.email = email
             user.profile.phone_number = phone_number
-            user.profile.profile_pic = profile_pic
+            if(len(profile_pic)):
+                profile_pic = profile_pic.replace(" ","_")
+                profile_pic = profile_pic.replace("(","")
+                profile_pic = profile_pic.replace(")","")
+                profile_pic = "profile_pic/"+ profile_pic
+                user.profile.profile_pic = profile_pic
             user.profile.location = location
             user.save()
             messages.success(request, 'Profile edited successfully')

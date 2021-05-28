@@ -27,8 +27,7 @@
                 </div>
                 <p>Edit Product</p>
                 <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
-                <button style="font-size: 25px;"><i class="fas fa-boxes"></i>Orders</button>
-                <a class="sign" href="wallet"><i class="fas fa-wallet"></i></a>
+                <a class="rem" style="padding:0px" href="{% url 'giveOrders' %}"><i class="fas fa-boxes"></i>Orders</a>
                 <a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
                 <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
             </div>
@@ -79,6 +78,7 @@
                     </section>
                     <section id="click">
                         <input type="submit">
+                        <a style="all:unset" href="{% url 'itemDelete' item.id %}"><i class="fas fa-trash-alt"></i></a>
                     </section>
                 </div>
             </div>

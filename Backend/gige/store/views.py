@@ -94,7 +94,7 @@ def itemAdd(request):
 def itemDelete(request,pk):
     
     try:
-        item = Item.objects.get(user=request.user.id, id=pk)
+        item = Item.objects.get(id=pk)
         item.delete()
         messages.success(request, 'Item deleted successfully')
         return redirect('give')
@@ -109,11 +109,15 @@ def itemEdit(request,pk):
     if (request.method == 'POST'):
         
         item = Item.objects.get(id=pk)
-        print(request.POST)
         item.name = request.POST['name']
         item.description = request.POST['description']
         if(request.POST['p-img']):
-            item.item_pic = request.POST['p-img']
+            item_pic = request.POST['p-img']
+            item_pic = item_pic.replace(" ","_")
+            item_pic = item_pic.replace("(","")
+            item_pic = item_pic.replace(")","")
+            item_pic = "item_pic/"+ item_pic
+            item.item_pic = item_pic
         item.price = request.POST['price']
         # item.category = request.POST['category']
         item.days = request.POST['days']
@@ -122,7 +126,6 @@ def itemEdit(request,pk):
         return redirect('itemEdit',pk=pk)
     
     else:
-
         try:
             user = User.objects.get(username=request.user.username)
             item =  Item.objects.get(id=pk)
@@ -185,10 +188,9 @@ def itemSearch(request):
 
     pk = request.GET['search']
     items = Item.objects.filter(Q(name__icontains=pk)|Q(description__icontains=pk)).distinct().exclude(owner=request.user.id)
-    print(items)
     user = User.objects.get(username=request.user.username)
     data = {"user": user, "items": items}
-    return render(request, 'searchItem.html', data)
+    return render(request, 'searchItem.html', data) 
 
 
 @login_required
@@ -197,8 +199,6 @@ def getOrders(request):
     user = User.objects.get(username=request.user.username)
     orders = Transaction.objects.filter(customer=user)
     data = {"user": user, "orders": orders}
-    print(orders[0])
-    print(orders[0].item.owner.first_name)
     return render(request,'orders_getter.html',data)
 
 
@@ -209,3 +209,16 @@ def giveOrders(request):
     orders = Transaction.objects.filter(item__owner=user)
     data = {"user": user, "orders": orders}
     return render(request,'orders_giver.html',data)
+
+
+@login_required
+def DeleteOrders(request,pk):
+
+    try:
+        transaction = Transaction.objects.get(transaction_id=pk)
+        transaction.delete()
+        messages.success(request, 'Order deleted')
+        return redirect('getOrders')
+    except:
+        messages.error(request, 'Order does not exists')
+        return redirect('getOrders')
