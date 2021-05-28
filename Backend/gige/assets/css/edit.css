@@ -1,0 +1,38 @@
+.det-col-2{
+    background-color: white;
+    width: 100%;
+}
+.det-col-1{
+    width: 20%;
+}
+.td{
+    height: 10px;
+}
+.des-prod{
+    font-size: 30px;
+}
+textarea{
+    font-family: 'Poppins',sans-serif;
+    width: 100%;
+    font-size: 15px;
+}
+button{
+    width:150px;
+    background-color: #FFDF00;
+    color: black;
+}
+button:hover{
+    border: 2px solid;
+    background-color: #FFDF00;
+    color: black;
+    cursor: pointer;
+}
+#img-s{
+    width: 500px;
+    height: 400px;
+    border-radius: 20%;
+    border: 2px solid;
+}
+#img-s:hover{
+    cursor: pointer;
+}

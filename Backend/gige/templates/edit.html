@@ -26,8 +26,10 @@
                     <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
                 </div>
                 <p>Edit Product</p>
-                <button style="margin-left: auto;font-size: 25px;" onclick="back()">Go Back</button>
-                <a class="rem" style="padding:0px" href="{% url 'giveOrders' %}"><i class="fas fa-boxes"></i>Orders</a>
+                <button style="margin-left: auto;font-size: 20px;" onclick="back()">Go Back</button>
+                <a style="font-size: 20px;" href="{% url 'get' %}"><i class="fas fa-home"></i>HOME</a>
+                <a style="width: 10px;"></a>
+                <a style="font-size: 20px;" href="{% url 'giveOrders' %}"><i class="fas fa-boxes"></i>Orders</a>
                 <a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
                 <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
             </div>
@@ -64,10 +66,6 @@
                                 <tr>
                                     <td class="det-space"></td>
                                     <td class="det-space"></td>
-                                </tr>
-                                <tr>
-                                    <th class="det-col-1">Status</th>
-                                    <th class="det-col-2"><input type="text" required value="{{item.status}}" id="e-sat"></th>
                                 </tr>
                                 <tr>
                                     <td class="det-space"></td>

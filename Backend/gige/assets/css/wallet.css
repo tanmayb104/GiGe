@@ -1,0 +1,135 @@
+body{
+    font-family: 'Poppins',sans-serif;
+}
+.nav-all
+{
+    display: flex;
+    align-items: center;
+    background-color: #FFDF00;
+    position: fixed;
+    height: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow:  0px 2px 2px;
+}
+.brand{
+    background-color: black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.back{
+    flex: 1;
+}
+.prod-det{
+    margin-top: 30px;
+    display: flex;
+}
+.prod-img{
+    /* position: fixed; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 50px 100px 30px 50px;
+}
+.prod-img > img{
+    width: 500px;
+    height: 400px;
+    border-radius: 20%;
+    border: 2px solid;
+}
+.det{
+    flex:1;
+    /* margin-left: 50%; */
+    margin-top:50px;
+}
+h2{
+    font-size: 50px;
+    margin: 0;
+}
+#des{
+    font-size: 30px;
+    margin: 0;
+}
+#det1{
+    margin: 5px;
+}
+#det2{
+    margin: 5px;
+}
+.det-col-1{
+    column-width: 150px;
+    text-align: left;
+    outline: 2px solid;
+}
+.det-col-2{
+    column-width: 150px;
+    text-align: left;
+    outline: 2px solid;
+}
+tr{
+    height: 30px;
+    background-color: rgb(242,242,242);
+}
+table{
+    margin-top: 20px;
+    width:80%;
+}
+
+#click{
+    width:80%;
+}
+#click > p{
+    display: inline-block;
+    font-size: 20px;
+}
+#click > button{
+    width: 200px;
+    margin-top: 20px;
+}
+#s-icon{
+    border-radius: 50%;
+    border:2px solid;
+}
+#s-name{
+    display: inline-block;
+    position: absolute;
+    margin-left: 2px;
+    font-size: 20px;
+}
+.det-space{
+    background-color: white;
+}
+#page-des{
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-top: 150px;
+    height: 80px;
+    font-size: 50px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+#page-des > i{
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+}
+.des-prod{
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding-bottom: 100px;
+}
+.click1{
+    margin: 0;
+    width: 400px;
+}
