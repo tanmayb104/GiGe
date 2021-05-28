@@ -11,11 +11,11 @@ def welcome(request):
     return render(request, 'home.html')
 
 def login(request):
-    
+
     if(request.method == 'POST'):
         username = request.POST['username']
         password = request.POST['password']
-        
+
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
@@ -25,6 +25,7 @@ def login(request):
         else:
             messages.error(request, 'Invalid Credentials')
             return redirect('login')
+
 
     else:
         return render(request, 'login.html')
@@ -43,6 +44,7 @@ def register(request):
         profile_pic = profile_pic.replace("(","")
         profile_pic = profile_pic.replace(")","")
         profile_pic = "profile_pic/"+ profile_pic
+        location = request.POST['loc']
 
         if(password1==password2):
             if(User.objects.filter(username=username).exists()):
@@ -58,6 +60,7 @@ def register(request):
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 user.profile.phone_number = phone_number
                 user.profile.profile_pic = profile_pic
+                user.profile.location = location
                 user.save()
                 messages.success(request, 'Registered successfully')
                 return redirect('login')
@@ -85,6 +88,7 @@ def profile(request):
         email = request.POST['email']
         phone_number = request.POST['phone_number']
         profile_pic = request.POST['profile_pic']
+        location = request.POST['loc']
 
         if(User.objects.filter(username=username).exists() and username!=request.user.username):
             messages.error(request, 'Username Taken')
@@ -97,13 +101,11 @@ def profile(request):
             return redirect('profile')
         else:
             user = User.objects.get(username = request.user.username)
-            user.first_name = first_name
-            user.last_name = last_name
             user.username = username
             user.email = email
             user.profile.phone_number = phone_number
             user.profile.profile_pic = profile_pic
-            user.set_password(password1)
+            user.profile.location = location
             user.save()
             messages.success(request, 'Profile edited successfully')
             return redirect('profile')
@@ -113,3 +115,4 @@ def profile(request):
         user = User.objects.filter(username=request.user.username)
         profile={"user": user[0]}
         return render(request, 'profile.html', profile)
+

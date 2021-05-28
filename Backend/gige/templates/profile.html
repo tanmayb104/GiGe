@@ -38,6 +38,7 @@
                 <form method="post" action="{% url 'profile' %}">
                     {% csrf_token %}
                     <table>
+                        <tr></tr>
                         <tr>
                             <th class="det-col-1">Username</th>
                             <td><input type="text" required id="u-name" name="username" value="{{user.username}}"></td>
@@ -51,15 +52,11 @@
                             <td><input type="text" required id="u-no" name="phone_number" value="{{user.profile.phone_number}}"></td>
                         </tr>
                         <tr>
-                            <th class="det-col-1">Date of Birth</th>
-                            <td><input type="text" required id="u-dob" value="7 Oct 2001"></td>
-                        </tr>
-                        <tr>
                             <th class="det-col-1">Address</th>
                             <td><textarea rows="3" cols="80" id="u-add">{{user.profile.location}}</textarea></td>
                         </tr>
                     </table>
-                    <div id="p-but">
+                    <div id="p-but" style="align-content:flex-end;">
                         <input type="submit">
                     </div>
             </div>
