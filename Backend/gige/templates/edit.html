@@ -19,7 +19,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <form method="post" action="{% url 'itemEdit' item.id %}">
+        <form method="post" action="{% url 'itemEdit' item.id %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class = "nav-all">
                 <div class="brand">

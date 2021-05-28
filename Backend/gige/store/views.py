@@ -52,18 +52,15 @@ def categoryView(request,pk):
 def itemAdd(request):
 
     if (request.method == 'POST'):
+        _, file = request.FILES.popitem()
+        file = file[0]
         name = request.POST['pname']
         description = request.POST['pdes']
-        item_pic = request.POST['pimg']
-        item_pic = item_pic.replace(" ","_")
-        item_pic = item_pic.replace("(","")
-        item_pic = item_pic.replace(")","")
-        item_pic = "item_pic/"+ item_pic
         price = request.POST['pcost']
         digital = request.POST['pdig']
         category = request.POST['pcat']
         days = request.POST['pday']
-        item,created = Item.objects.get_or_create(name=name, description=description, item_pic=item_pic, owner=request.user, price=price, digital=digital, status=False, category=category, days=days)
+        item,created = Item.objects.get_or_create(name=name, description=description, item_pic=file, owner=request.user, price=price, digital=digital, status=False, category=category, days=days)
         if(created):
             messages.success(request, 'Item listed successfully')
             return redirect('give')
@@ -111,15 +108,11 @@ def itemEdit(request,pk):
         item = Item.objects.get(id=pk)
         item.name = request.POST['name']
         item.description = request.POST['description']
-        if(request.POST['p-img']):
-            item_pic = request.POST['p-img']
-            item_pic = item_pic.replace(" ","_")
-            item_pic = item_pic.replace("(","")
-            item_pic = item_pic.replace(")","")
-            item_pic = "item_pic/"+ item_pic
-            item.item_pic = item_pic
+        if(len(request.FILES)):
+            _, file = request.FILES.popitem()
+            file = file[0]
+            item.item_pic = file
         item.price = request.POST['price']
-        # item.category = request.POST['category']
         item.days = request.POST['days']
         item.save()
         messages.success(request, 'Item edited successfully')

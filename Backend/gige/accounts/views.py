@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 def welcome(request):
     return render(request, 'home.html')
 
+
 def login(request):
 
     if(request.method == 'POST'):
@@ -39,11 +40,8 @@ def register(request):
         password2 = request.POST['password2']
         email = request.POST['email']
         phone_number = request.POST['phone_number']
-        profile_pic = request.POST['profile_pic']
-        profile_pic = profile_pic.replace(" ","_")
-        profile_pic = profile_pic.replace("(","")
-        profile_pic = profile_pic.replace(")","")
-        profile_pic = "profile_pic/"+ profile_pic
+        _, file = request.FILES.popitem()
+        file = file[0]
         location = request.POST['loc']
 
         if(password1==password2):
@@ -59,7 +57,7 @@ def register(request):
             else:
                 user = User.objects.create_user(username=username, password=password1, email=email, first_name=first_name, last_name=last_name)
                 user.profile.phone_number = phone_number
-                user.profile.profile_pic = profile_pic
+                user.profile.profile_pic = file
                 user.profile.location = location
                 user.save()
                 messages.success(request, 'Registered successfully')
@@ -84,11 +82,9 @@ def profile(request):
 
     if (request.method == 'POST'):
 
-        print(request.POST)
         username = request.POST['username']
         email = request.POST['email']
         phone_number = request.POST['phone_number']
-        profile_pic = request.POST['p-img']
         location = request.POST['loc']
 
         if(User.objects.filter(username=username).exists() and username!=request.user.username):
@@ -103,12 +99,10 @@ def profile(request):
             user.username = username
             user.email = email
             user.profile.phone_number = phone_number
-            if(len(profile_pic)):
-                profile_pic = profile_pic.replace(" ","_")
-                profile_pic = profile_pic.replace("(","")
-                profile_pic = profile_pic.replace(")","")
-                profile_pic = "profile_pic/"+ profile_pic
-                user.profile.profile_pic = profile_pic
+            if(len(request.FILES)):
+                _, file = request.FILES.popitem()
+                file = file[0]
+                user.profile.profile_pic = file
             user.profile.location = location
             user.save()
             messages.success(request, 'Profile edited successfully')

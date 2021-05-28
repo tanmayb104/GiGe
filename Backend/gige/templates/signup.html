@@ -65,7 +65,7 @@
                     <p style="font-size: 40px;">On your Campus</p>
                 </div>
                 <div class="child">
-                    <form id="val-for" onsubmit = "return formchk()" action="{% url 'register' %}" method="post">
+                    <form id="val-for" onsubmit = "return formchk()" action="{% url 'register' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
 
                         <div class="aligner">

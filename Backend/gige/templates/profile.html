@@ -27,7 +27,7 @@
             <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
         </div>
         <div id="page-des"><h2>Profile</h2></div>
-        <form method="post" action="{% url 'profile' %}">
+        <form method="post" action="{% url 'profile' %}" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="prof-det">
             <div class="user-img">
