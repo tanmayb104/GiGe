@@ -57,7 +57,7 @@ def itemAdd(request):
         name = request.POST['pname']
         description = request.POST['pdes']
         price = request.POST['pcost']
-        digital = request.POST['pdig']
+        digital = False
         category = request.POST['pcat']
         days = request.POST['pday']
         item,created = Item.objects.get_or_create(name=name, description=description, item_pic=file, owner=request.user, price=price, digital=digital, status=False, category=category, days=days)

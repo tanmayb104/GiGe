@@ -20,7 +20,7 @@
         <div class="cont-main">
             <div class="user-nav">
                 <p id="txt">Add New Product</p>
-                <a class="rem" href="">Go Back</a>
+                <a class="rem" href="{% url 'give' %}">Go Back</a>
                 <a class="rem" href="{% url 'profile' %}"><i class="fa fa-user"></i></a>
             </div>
             <div id="logo">
@@ -43,6 +43,8 @@
                     <span>
                         <label for="pcost">Cost:</label>
                         <input class="i-half" type="number" id="pcost" name="pcost" required placeholder="Cost">
+                    </span>
+                    <span>
                         <label for="pday">Days:</label>
                         <input class="i-half" type="number" id="pday" name="pday" required placeholder="Days">
                     </span>
@@ -55,11 +57,7 @@
                             <option value="General" name="pcat">General</option>
                         </select>
                     </span>
-                    <span>
-                        Digital:
-                        <input type="radio" id="ra1" name="pdig" required value="True">Yes
-                        <input type="radio" id="ra2" name="pdig" required value="False">No
-                    </span>
+                    <span></span><span></span>
                     <span>
                         <img src="" id="img-af" width="100px" height="100px" style="display: none;">
                         <label id="img-bef" for="pimg"><i class="fas fa-images"></i>Add Image</label>

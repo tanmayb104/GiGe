@@ -26,12 +26,11 @@
                     <img src = "{% static '/images/Frame.png' %}" width="100px" height="100px">
                 </div>
                 <p>Edit Product</p>
-                <button style="margin-left: auto;font-size: 20px;" onclick="back()">Go Back</button>
-                <a style="font-size: 20px;" href="{% url 'get' %}"><i class="fas fa-home"></i>HOME</a>
-                <a style="width: 10px;"></a>
-                <a style="font-size: 20px;" href="{% url 'giveOrders' %}"><i class="fas fa-boxes"></i>Orders</a>
-                <a class="sign" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
-                <a class="sign" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
+                <a style="margin-left: auto;font-size: 20px; padding: 15px" href="{% url 'give' %}">Go Back</a>
+                <a style="font-size: 20px; padding: 15px" href="{% url 'get' %}"><i class="fas fa-home"></i>HOME</a>
+                <a style="font-size: 20px; padding: 15px" href="{% url 'giveOrders' %}"><i class="fas fa-boxes"></i>Orders</a>
+                <a class="sign" style="font-size: 20px; padding: 15px; margin: 0px" href="{% url 'profile' %}"><i class="fa fa-user-circle"></i></a>
+                <a class="sign" style="font-size: 20px; padding: 15px; margin: 0px" href="{% url 'logout' %}"><i class="fas fa-sign-in-alt"></i></a>
             </div>
             <div id="page-des"><h2>Edit</h2></div>
             <div class="prod-det">
