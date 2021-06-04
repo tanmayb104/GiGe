@@ -33,7 +33,7 @@ class Item(models.Model):
 
 class Transaction(models.Model):
 
-    item = models.OneToOneField(Item, on_delete=models.SET_NULL, blank=True, null=True)
+    item = models.ForeignKey(Item, on_delete=models.SET_NULL, blank=True, null=True)
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True, related_name="getter")
     date_ordered = models.DateTimeField(auto_now_add=True)
     transaction_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
